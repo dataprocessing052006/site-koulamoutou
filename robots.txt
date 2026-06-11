@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /_archives/
+
+# Sitemap : à activer une fois le nom de domaine définitif connu
+# Sitemap: https://www.mairie-koulamoutou.ga/sitemap.xml

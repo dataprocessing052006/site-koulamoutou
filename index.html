@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ville de Koula-Moutou — Chef-lieu de l'Ogooué-Lolo, Gabon</title>
+  <meta name="description" content="Site institutionnel officiel de la ville de Koula-Moutou, chef-lieu de la province de l'Ogooué-Lolo au Gabon. Découvrez la ville, son histoire, son tourisme, son économie et les services de la mairie.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/svg+xml" href="images/blason-koulamoutou.svg">
+</head>
+<body data-page="accueil">
+  <div id="site-entete"></div>
+
+  <!-- HÉROS IMMERSIF -->
+  <section class="hero">
+    <div class="hero__bg">
+      <svg viewBox="0 0 1440 560" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#1d6e7a"/><stop offset=".5" stop-color="#1c6a4a"/><stop offset="1" stop-color="#0c3d22"/>
+          </linearGradient>
+          <radialGradient id="sun" cx="78%" cy="22%" r="40%">
+            <stop offset="0" stop-color="#ffe9a8" stop-opacity=".55"/><stop offset="1" stop-color="#ffe9a8" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <rect width="1440" height="560" fill="url(#sky)"/>
+        <rect width="1440" height="560" fill="url(#sun)"/>
+        <path d="M0 360 Q240 300 480 340 T960 330 T1440 350 V560 H0 Z" fill="#15603a" opacity=".55"/>
+        <path d="M0 400 Q300 340 620 390 T1180 380 T1440 400 V560 H0 Z" fill="#11502f" opacity=".7"/>
+        <path d="M0 430 Q360 410 720 430 T1440 430 V560 H0 Z" fill="#bfe3cf" opacity=".10"/>
+        <path d="M0 470 q60 -34 120 -8 q40 -40 96 -14 q44 -36 104 -8 q50 -34 110 -6 q44 -34 102 -6 q54 -34 112 -4 q48 -34 108 -8 q56 -32 118 -2 q50 -32 110 -6 q56 -30 120 0 q48 -28 130 6 V560 H0 Z" fill="#0c3d22"/>
+        <g fill="#082a18" opacity=".9">
+          <path d="M120 470 l26 -78 26 78 z"/><path d="M1280 472 l30 -92 30 92 z"/><path d="M300 474 l20 -60 20 60 z"/>
+        </g>
+      </svg>
+    </div>
+    <div class="hero__veil"></div>
+    <div class="wrap">
+      <span class="tag">Portail officiel de la commune</span>
+      <h1>Bienvenue à Koula-Moutou,<br>au cœur de la forêt de l'Ogooué-Lolo</h1>
+      <p>Effectuez vos démarches en quelques clics, suivez la vie locale et découvrez une ville chaleureuse au bord de la Bouenguidi.</p>
+      <form class="search" onsubmit="event.preventDefault();alert('Recherche de démarche : '+(this.q.value||'—'));">
+        <input name="q" type="text" placeholder="Rechercher une démarche (ex. acte de naissance)…" aria-label="Rechercher une démarche">
+        <button type="submit"><svg viewBox="0 0 24 24"><path d="M21 20l-5.6-5.6a7 7 0 1 0-1.4 1.4L20 21zM5 10.5A5.5 5.5 0 1 1 10.5 16 5.5 5.5 0 0 1 5 10.5z"/></svg>Rechercher</button>
+      </form>
+      <div class="chips">
+        <a href="administration.html">Acte de naissance</a>
+        <a href="administration.html">Mariage civil</a>
+        <a href="administration.html">Permis de construire</a>
+        <a href="tourisme.html">Découvrir la ville</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHIFFRES CLÉS -->
+  <section class="section">
+    <div class="conteneur">
+      <div class="stats">
+        <div class="stat revele"><div class="stat__nombre"><span data-compteur="25651">0</span></div><div class="stat__label">Habitants (recensement 2013)</div></div>
+        <div class="stat revele"><div class="stat__nombre"><span data-compteur="4">0</span></div><div class="stat__label">Départements de la province</div></div>
+        <div class="stat revele"><div class="stat__nombre"><span data-compteur="25380" data-suffixe=" km²">0</span></div><div class="stat__label">Superficie de la province</div></div>
+        <div class="stat revele"><div class="stat__nombre"><span data-compteur="1949">0</span></div><div class="stat__label">Année d'élection comme chef-lieu</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MOT DU MAIRE -->
+  <section class="section section--alt">
+    <div class="conteneur duo">
+      <div class="duo__visuel v-photo revele" style="background-image:url('images/koulamoutou-ville.jpg')">
+        <span>Vue de Koula-Moutou, nichée dans les collines de l'Ogooué-Lolo</span>
+        <i class="credit">Photo : V. Vaquin — CC BY-SA 3.0</i>
+      </div>
+      <div class="duo__texte revele">
+        <h2>Le mot du Maire</h2>
+        <p>« Chères concitoyennes, chers concitoyens, chers visiteurs,</p>
+        <p>Koula-Moutou est une ville qui se construit chaque jour avec l'engagement de ses habitants. Nichée dans l'écrin verdoyant de l'Ogooué-Lolo, notre commune conjugue authenticité, hospitalité et ambition de développement.</p>
+        <p>Ce portail officiel est conçu pour vous rapprocher de votre administration, faciliter vos démarches et faire rayonner les atouts de notre territoire. Soyez les bienvenus. »</p>
+        <a href="administration.html" class="btn btn--vert mt-40">Conseil municipal &amp; services</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- DÉCOUVRIR -->
+  <section class="section">
+    <div class="conteneur">
+      <h2 class="section-titre">Découvrir Koula-Moutou</h2>
+      <p class="section-intro">Une ville-nature aux multiples visages : patrimoine, traditions, biodiversité et opportunités.</p>
+      <div class="grille grille--3">
+        <article class="carte revele">
+          <div class="carte__visuel v-foret"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 5 9h3l-4 5h3l-3 4h6v3h2v-3h6l-3-4h3l-4-5h3z"/></svg></div>
+          <div class="carte__corps"><h3>Histoire & Identité</h3><p>Des origines aux peuples Bandjabi, Adouma, Mitsogho et Pouvi qui façonnent l'âme de la province.</p><a href="presentation.html" class="carte__lien">En savoir plus</a></div>
+        </article>
+        <article class="carte revele">
+          <div class="carte__visuel v-riviere"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 18c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2 2-2 2-2v3H3v-1zm0-5c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2 2-2 2-2v3s0 2-2 2-2-2-4-2-2 2-4 2-2-2-4-2-2 2-4 2v-3z"/></svg></div>
+          <div class="carte__corps"><h3>Nature & Rivières</h3><p>La Bouenguidi et l'Ogooué, la forêt équatoriale, une biodiversité exceptionnelle à préserver.</p><a href="tourisme.html" class="carte__lien">Explorer</a></div>
+        </article>
+        <article class="carte revele">
+          <div class="carte__visuel v-or"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 13h2v7H3zm4-4h2v11H7zm4-5h2v16h-2zm4 8h2v8h-2zm4-4h2v12h-2z"/></svg></div>
+          <div class="carte__corps"><h3>Économie & Avenir</h3><p>Filière bois, agriculture, artisanat et projets de développement local porteurs d'emplois.</p><a href="economie.html" class="carte__lien">Découvrir</a></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES RAPIDES -->
+  <section class="section section--vert">
+    <div class="conteneur">
+      <h2 class="section-titre">Vos démarches en quelques clics</h2>
+      <p class="section-intro">La mairie de Koula-Moutou simplifie vos formalités administratives.</p>
+      <div class="grille grille--4">
+        <a href="administration.html" class="carte revele" style="text-decoration:none">
+          <div class="carte__corps texte-centre">
+            <svg viewBox="0 0 24 24" width="46" height="46" fill="#1b5e3a" style="margin:0 auto 12px"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+            <h3 style="font-size:1.05rem">Acte de naissance</h3><p style="margin:0">Demande & retrait</p>
+          </div>
+        </a>
+        <a href="administration.html" class="carte revele" style="text-decoration:none">
+          <div class="carte__corps texte-centre">
+            <svg viewBox="0 0 24 24" width="46" height="46" fill="#1b5e3a" style="margin:0 auto 12px"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-4 0-9 2-9 6v2h18v-2c0-4-5-6-9-6z"/></svg>
+            <h3 style="font-size:1.05rem">État civil</h3><p style="margin:0">Mariage, décès, copie</p>
+          </div>
+        </a>
+        <a href="administration.html" class="carte revele" style="text-decoration:none">
+          <div class="carte__corps texte-centre">
+            <svg viewBox="0 0 24 24" width="46" height="46" fill="#1b5e3a" style="margin:0 auto 12px"><path d="M12 3 2 9l10 6 10-6-10-6zm0 13L4 11v4l8 5 8-5v-4l-8 5z"/></svg>
+            <h3 style="font-size:1.05rem">Permis de construire</h3><p style="margin:0">Urbanisme & cadastre</p>
+          </div>
+        </a>
+        <a href="contact.html" class="carte revele" style="text-decoration:none">
+          <div class="carte__corps texte-centre">
+            <svg viewBox="0 0 24 24" width="46" height="46" fill="#1b5e3a" style="margin:0 auto 12px"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            <h3 style="font-size:1.05rem">Nous contacter</h3><p style="margin:0">Questions & réclamations</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACTUALITÉS -->
+  <section class="section">
+    <div class="conteneur">
+      <h2 class="section-titre">Actualités de la ville</h2>
+      <p class="section-intro">Restez informés de la vie locale et des projets de votre commune.</p>
+      <div class="grille grille--3">
+        <article class="actu revele">
+          <div class="actu__visuel v-terre"></div>
+          <div class="actu__corps">
+            <span class="etiquette">Voirie</span>
+            <div class="actu__date" style="margin-top:10px">15 mai 2026</div>
+            <h3>Réhabilitation des voies du centre-ville</h3>
+            <p>Le programme de réfection des principales artères de Koula-Moutou est lancé pour améliorer la circulation.</p>
+            <a href="actualites.html" class="carte__lien">Lire la suite</a>
+          </div>
+        </article>
+        <article class="actu revele">
+          <div class="actu__visuel v-photo" style="background-image:url('images/foret-gabon-1.jpg')"></div>
+          <div class="actu__corps">
+            <span class="etiquette">Environnement</span>
+            <div class="actu__date" style="margin-top:10px">28 avril 2026</div>
+            <h3>Journée de reboisement sur les berges</h3>
+            <p>Habitants et associations se mobilisent pour protéger les rives de la Bouenguidi.</p>
+            <a href="actualites.html" class="carte__lien">Lire la suite</a>
+          </div>
+        </article>
+        <article class="actu revele">
+          <div class="actu__visuel v-photo" style="background-image:url('images/case-bwiti.jpg')"></div>
+          <div class="actu__corps">
+            <span class="etiquette">Culture</span>
+            <div class="actu__date" style="margin-top:10px">10 avril 2026</div>
+            <h3>Festival des cultures de l'Ogooué-Lolo</h3>
+            <p>Musique, danses traditionnelles et gastronomie locale ont animé la ville tout un week-end.</p>
+            <a href="actualites.html" class="carte__lien">Lire la suite</a>
+          </div>
+        </article>
+      </div>
+      <div class="texte-centre mt-40"><a href="actualites.html" class="btn btn--vert">Toutes les actualités</a></div>
+    </div>
+  </section>
+
+  <!-- APPEL À L'ACTION -->
+  <section class="section section--vert cta">
+    <div class="conteneur">
+      <h2>Visitez Koula-Moutou</h2>
+      <p>Laissez-vous porter par le chant de la forêt équatoriale et la chaleur de l'accueil gabonais. Activez l'ambiance sonore de la forêt dans le menu en haut pour une immersion totale. 🌳</p>
+      <a href="tourisme.html" class="btn btn--or">Préparer ma visite</a>
+    </div>
+  </section>
+
+  <footer class="pied" id="site-pied"></footer>
+
+  <script src="js/foret-ambiance.js"></script>
+  <script src="js/composants.js"></script>
+</body>
+</html>

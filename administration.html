@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services & Démarches — Mairie de Koula-Moutou</title>
+  <meta name="description" content="Catalogue complet des services municipaux de Koula-Moutou : état civil, urbanisme, voirie, action sociale, culture, numérique et plus.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/svg+xml" href="images/blason-koulamoutou.svg">
+</head>
+<body data-page="administration">
+  <div id="site-entete"></div>
+
+  <section class="heros heros--page">
+    <div class="conteneur heros__contenu">
+      <span class="heros__sur-titre">Hôtel de Ville</span>
+      <h1>Services & Démarches</h1>
+      <p>Tous les services de la mairie de Koula-Moutou au service des habitants, des entreprises et des visiteurs.</p>
+      <div class="fil"><a href="index.html">Accueil</a> › Services &amp; Démarches</div>
+    </div>
+  </section>
+
+  <!-- ACCÈS RAPIDE PAR CATÉGORIE -->
+  <section class="section">
+    <div class="conteneur">
+      <h2 class="section-titre">Accès rapide par service</h2>
+      <p class="section-intro">Cliquez sur la catégorie qui correspond à votre besoin pour y accéder directement.</p>
+      <div class="grille grille--4">
+        <a href="#etat-civil" class="carte revele" style="text-decoration:none">
+          <div class="carte__corps texte-centre">
+            <svg viewBox="0 0 24 24" width="42" height="42" fill="#1b5e3a" style="margin:0 auto 10px"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 7V3.5L18.5 9H13z"/></svg>
+            <h3 style="font-size:.98rem">État civil</h3><p style="margin:0;font-size:.84rem">Naissance, mariage, décès…</p>
+          </div>
+        </a>
+        <a href="#urbanisme" class="carte revele" style="text-decoration:none">
+          <div class="carte__corps texte-centre">
+            <svg viewBox="0 0 24 24" width="42" height="42" fill="#1b5e3a" style="margin:0 auto 10px"><path d="M4 22V8l8-6 8 6v14h-5v-6H9v6H4z"/></svg>
+            <h3 style="font-size:.98rem">Urbanisme</h3><p style="margin:0;font-size:.84rem">Permis, foncier, cadastre</p>
+          </div>
+        </a>
+        <a href="#voirie" class="carte revele" style="text-decoration:none">
+          <div class="carte__corps texte-centre">
+            <svg viewBox="0 0 24 24" width="42" height="42" fill="#1b5e3a" style="margin:0 auto 10px"><path d="M1 12h2v8H1zm20 0h2v8h-2zM6 12h12v8H6zM4 4h16v2H4zM7 8h10v2H7z"/></svg>
+            <h3 style="font-size:.98rem">Voirie</h3><p style="margin:0;font-size:.84rem">Routes, signalement</p>
+          </div>
+        </a>
+        <a href="#marches" class="carte revele" style="text-decoration:none">
+          <div class="carte__corps texte-centre">
+            <svg viewBox="0 0 24 24" width="42" height="42" fill="#1b5e3a" style="margin:0 auto 10px"><path d="M5 21h14v-2H5v2zm0-4h14v-2H5v2zm0-4h14v-2H5v2zm0-4h14V7H5v2zm0-6v2h14V3H5z"/></svg>
+            <h3 style="font-size:.98rem">Marchés</h3><p style="margin:0;font-size:.84rem">Commerce, licences</p>
+          </div>
+        </a>
+        <a href="#hygiene" class="carte revele" style="text-decoration:none">
+          <div class="carte__corps texte-centre">
+            <svg viewBox="0 0 24 24" width="42" height="42" fill="#1b5e3a" style="margin:0 auto 10px"><path d="M12 2C8 6 6 9 6 12a6 6 0 0 0 12 0c0-3-2-6-6-10z"/></svg>
+            <h3 style="font-size:.98rem">Hygiène</h3><p style="margin:0;font-size:.84rem">Déchets, salubrité</p>
+          </div>
+        </a>
+        <a href="#social" class="carte revele" style="text-decoration:none">
+          <div class="carte__corps texte-centre">
+            <svg viewBox="0 0 24 24" width="42" height="42" fill="#1b5e3a" style="margin:0 auto 10px"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+            <h3 style="font-size:.98rem">Action sociale</h3><p style="margin:0;font-size:.84rem">Aide, solidarité</p>
+          </div>
+        </a>
+        <a href="#culture-sport" class="carte revele" style="text-decoration:none">
+          <div class="carte__corps texte-centre">
+            <svg viewBox="0 0 24 24" width="42" height="42" fill="#1b5e3a" style="margin:0 auto 10px"><path d="M12 3 2 9l10 6 10-6-10-6zm0 8L4 7l8-4 8 4-8 4zm0 3L4 10l8 5 8-5-8 4z"/></svg>
+            <h3 style="font-size:.98rem">Culture & Sport</h3><p style="margin:0;font-size:.84rem">Équipements, associations</p>
+          </div>
+        </a>
+        <a href="#numerique" class="carte revele" style="text-decoration:none">
+          <div class="carte__corps texte-centre">
+            <svg viewBox="0 0 24 24" width="42" height="42" fill="#1b5e3a" style="margin:0 auto 10px"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zM4 18V8l8 5 8-5v10H4z"/></svg>
+            <h3 style="font-size:.98rem">Numérique</h3><p style="margin:0;font-size:.84rem">e-Services, WiFi, CDI</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- A. ÉTAT CIVIL -->
+  <section class="section section--alt" id="etat-civil">
+    <div class="conteneur">
+      <h2 class="section-titre">A — État civil</h2>
+      <p class="section-intro">Le service de l'état civil enregistre les actes liés à la vie de chaque citoyen, de la naissance au décès. Accueil du lundi au samedi matin.</p>
+      <div class="grille grille--3">
+        <div class="service revele">
+          <div class="service__icone"><svg viewBox="0 0 24 24" fill="#1b5e3a"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 7V3.5L18.5 9H13z"/></svg></div>
+          <div><h3>Acte de naissance</h3><p>Copie intégrale ou extrait avec filiation. <strong>Pièces :</strong> CNI du demandeur, informations sur la naissance. Gratuit. Délai : 24–48 h. En cas d'acte non enregistré, jugement supplétif possible.</p></div>
+        </div>
+        <div class="service revele">
+          <div class="service__icone"><svg viewBox="0 0 24 24" fill="#1b5e3a"><path d="M9 11.5A1.5 1.5 0 1 1 9 8.5a1.5 1.5 0 0 1 0 3zm6 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg></div>
+          <div><h3>Mariage civil</h3><p>Dossier à déposer 30 jours avant. <strong>Pièces :</strong> CNI des deux époux, actes de naissance (–3 mois), justificatif de domicile, 2 témoins munis de leur CNI. Extrait de mariage délivré le jour J.</p></div>
+        </div>
+        <div class="service revele">
+          <div class="service__icone"><svg viewBox="0 0 24 24" fill="#1b5e3a"><path d="M6 2h12v20l-6-3-6 3V2z"/></svg></div>
+          <div><h3>Acte de décès</h3><p>Déclaration dans les 48 h. <strong>Pièces :</strong> certificat médical de décès, CNI du déclarant, livret de famille. Délivrance immédiate. Nécessaire pour l'inhumation et les droits successoraux.</p></div>
+        </div>
+        <div class="service revele">
+          <div class="service__icone"><svg viewBox="0 0 24 24" fill="#1b5e3a"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-4 0-9 2-9 6v2h18v-2c0-4-5-6-9-6z"/></svg></div>
+          <div><h3>Livret de famille</h3><p>Délivré lors du mariage civil ou sur demande après naissance d'un enfant. <strong>Pièces :</strong> actes de naissance des parents et de l'enfant, acte de mariage si applicable.</p></div>
+        </div>
+        <div class="service revele">
+          <div class="service__icone"><svg viewBox="0 0 24 24" fill="#1b5e3a"><path d="M20 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2zm-9 8H4v-2h7v2zm4-4H4V9h11v2z"/></svg></div>
+          <div><h3>Certificat de résidence</h3><p>Atteste du domicile habituel. <strong>Pièces :</strong> CNI valide, justificatif de domicile (facture eau/électricité ou attestation de logement). Délivré sur présentation.</p></div>
+        </div>
+        <div class="service revele">
+          <div class="service__icone"><svg viewBox="0 0 24 24" fill="#1b5e3a"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5z"/></svg></div>
+          <div><h3>Légalisation & copies conformes</h3><p>Certification et légalisation de signature sur actes administratifs. <strong>Pièces :</strong> originaux à présenter en mairie. Délai : immédiat. Service gratuit.</p></div>
+        </div>
+        <div class="service revele">
+          <div class="service__icone"><svg viewBox="0 0 24 24" fill="#1b5e3a"><path d="M3 4h18v4H3zm0 6h18v4H3zm0 6h12v4H3z"/></svg></div>
+          <div><h3>Reconnaissance de paternité</h3><p>Acte déclaratoire de paternité devant officier d'état civil. <strong>Pièces :</strong> CNI du père et de la mère, acte de naissance de l'enfant. Délai : immédiat sur rendez-vous.</p></div>
+        </div>
+        <div class="service revele">
+          <div class="service__icone"><svg viewBox="0 0 24 24" fill="#1b5e3a"><path d="M12 1L3 5v6c0 5.25 3.75 10.15 9 11.35C17.25 21.15 21 16.25 21 11V5l-9-4z"/></svg></div>
+          <div><h3>Jugement supplétif d'acte de naissance</h3><p>Pour les naissances non déclarées à temps. <strong>Pièces :</strong> témoignages de deux personnes majeures, CNI des témoins. Délai : 10–30 j selon le Tribunal.</p></div>
+        </div>
+        <div class="service revele">
+          <div class="service__icone"><svg viewBox="0 0 24 24" fill="#1b5e3a"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2a3 3 0 0 0 6 0h6a3 3 0 0 0 6 0h2v-5l-3-4z"/></svg></div>
+          <div><h3>Certificat de vie</h3><p>Pour les retraités ou bénéficiaires de pensions. <strong>Pièces :</strong> présence physique du bénéficiaire, CNI valide. Délivré sur présentation. Renouvellement annuel.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- B. URBANISME & FONCIER -->
+  <section class="section" id="urbanisme">
+    <div class="conteneur">
+      <h2 class="section-titre">B — Urbanisme & Foncier</h2>
+      <p class="section-intro">Le service urbanisme encadre les constructions, l'occupation des sols et la gestion du patrimoine foncier communal.</p>
+      <div class="grille grille--3">
+        <div class="service revele">
+          <div class="service__icone"><svg viewBox="0 0 24 24" fill="#1b5e3a"><path d="M4 22V8l8-6 8 6v14h-5v-6H9v6H4z"/></svg></div>
+          <div><h3>Permis de construire</h3><p><strong>Pièces :</strong> titre de propriété ou autorisation d'occuper, plan de situation, plan de masse, coupes et façades du projet. Délai d'instruction : 30 jours. Obligatoire pour toute construction neuve ou extension.</p></div>
+        </div>
+        <div class="service revele">
+          <div class="service__icone"><svg viewBox="0 0 24 24" fill="#1b5e3a"><path d="M14 6l-1-2H5v17h2v-7h5l1 2h7V6h-6zm4 8h-4l-1-2H7V6h5l1 2h5v6z"/></svg></div>
+          <div><h3>Déclaration préalable de travaux</h3><p>Pour les travaux de moindre importance (clôture, ravalement, véranda). Dépôt du formulaire + plan de situation en mairie. Délai de non-opposition : 15 jours.</p></div>
+        </div>
+        <div class="service revele">
+          <div class="service__icone"><svg viewBox="0 0 24 24" fill="#1b5e3a"><path d="M20 11H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2zm0 9H4v-7h16v7zM4 9h16V7H4v2z"/></svg></div>
+          <div><h3>Certificat d'urbanisme</h3><p>Renseigne sur les règles d'urbanisme applicables à un terrain. <strong>Pièces :</strong> plan cadastral, description du projet envisagé. Délai : 15 jours. Valable 12 mois.</p></div>
+        </div>
+        <div class="service revele">
+          <div class="service__icone"><svg viewBox="0 0 24 24" fill="#1b5e3a"><path d="M17 8C8 10 5.9 16.17 3.82 21H5.5C6 19 7 17 8 16c3.04 3.04 5.5 5 10 6V8h-1z"/></svg></div>
+          <div><h3>Alignement voirie</h3><p>Détermine la limite entre la voie publique et votre propriété avant construction en bordure de rue. Demande déposée au service urbanisme avec plan cadastral. Délai : 10 jours.</p></div>
+        </div>
+        <div class="service revele">
+          <div class="service__icone"><svg viewBox="0 0 24 24" fill="#1b5e3a"><path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm-7 14H7v-2h5v2zm5-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg></div>
+          <div><h3>Morcellement & lotissement</h3><p>Division d'une parcelle en plusieurs lots. <strong>Pièces :</strong> titre foncier, levé topographique, plan de morcellement approuvé par géomètre agréé. Délai d'instruction : 30–45 jours.</p></div>
+        </div>
+        <div class="service revele">
+          <div class="service__icone"><svg viewBox="0 0 24 24" fill="#1b5e3a"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>
+          <div><h3>Concession domaniale & bail</h3><p>Attribution par la mairie d'une parcelle du domaine communal pour usage résidentiel ou commercial. Délai d'instruction : 60 jours. Implique levé topographique et publication légale.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- C. VOIRIE & ESPACE PUBLIC -->
+  <section class="section section--alt" id="voirie">
+    <div class="conteneur">
+      <h2 class="section-titre">C — Voirie & Espace public</h2>
+      <p class="section-intro">La direction des services techniques gère la voirie urbaine, l'éclairage public et l'occupation du domaine public.</p>
+      <div class="grille grille--3">
+        <div class="service revele">
+          <div class="service__icone"><svg viewBox="0 0 24 24" fill="#1b5e3a"><path d="M20 8h-3V4H3a2 2 0 0 0-2 2v11h2a3 3 0 0 0 6 0h6a3 3 0 0 0 6 0h2v-5l-3-4z"/></svg></div>
+          <div><h3>Signalement voirie</h3><p>Signalez un nid-de-poule, un caniveau bouché, un lampadaire défaillant ou une signalisation dégradée. Par téléphone (+241 01 00 00 04), par e-mail ou via le formulaire contact en sélectionnant « Voirie ».</p></div>
+        </div>
+        <div class="service revele">
+          <div class="service__icone"><svg viewBox="0 0 24 24" fill="#1b5e3a"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3a4.237 4.237 0 0 0-6 0zm-4-4 2 2a7.074 7.074 0 0 1 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg></div>
+          <div><h3>Autorisation d'occupation temporaire (AOT)</h3><p>Pour installer un kiosque, une terrasse, un échafaudage ou occuper le trottoir pour un chantier. Formulaire AOT à retirer en mairie. Redevance selon la durée et la surface. Délai : 5 jours.</p></div>
+        </div>
+        <div class="service revele">
+          <div class="service__icone"><svg viewBox="0 0 24 24" fill="#1b5e3a"><path d="M20 6h-2.18c.07-.44.18-.88.18-1.5C18 2.46 15.54 0 12.5 0S7 2.46 7 4.5c0 .62.11 1.06.18 1.5H5C3.9 6 3 6.9 3 8v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7.5-4c1.38 0 2.5 1.12 2.5 2.5 0 .78-.36 1.47-.9 1.93A3.49 3.49 0 0 1 12.5 7c-.69 0-1.34-.2-1.88-.52A2.5 2.5 0 0 1 10 4.5C10 3.12 11.12 2 12.5 2z"/></svg></div>
+          <div><h3>Travaux riverains & branchements</h3><p>Autorisation de traversée de voie publique pour raccordement eau, électricité ou assainissement. <strong>Pièces :</strong> plans du branchement, devis de remise en état de la chaussée. Délai : 15 jours.</p></div>
+        </div>
+        <div class="service revele">
+          <div class="service__icone"><svg viewBox="0 0 24 24" fill="#1b5e3a"><path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26A7 7 0 0 0 19 9c0-3.86-3.14-7-7-7z"/></svg></div>
+          <div><h3>Éclairage public</h3><p>La mairie assure l'entretien du réseau d'éclairage public. Pour signaler une panne ou demander l'extension de l'éclairage à un nouveau quartier, contactez le service technique au +241 01 00 00 04.</p></div>
+        </div>
+        <div class="service revele">
+          <div class="service__icone"><svg viewBox="0 0 24 24" fill="#1b5e3a"><path d="M3 10c-.55 0-1 .45-1 1s.45 1 1 1h2v-2H3zm18 0h-2v2h2c.55 0 1-.45 1-1s-.45-1-1-1zm-9-7c-.55 0-1 .45-1 1v2h2V4c0-.55-.45-1-1-1zm0 18c.55 0 1-.45 1-1v-2h-2v2c0 .55.45 1 1 1z"/></svg></div>
+          <div><h3>Numérotation & adressage</h3><p>Attribution d'un numéro de rue et d'une adresse officielle pour une nouvelle construction ou une propriété non identifiée. Délai : 10 jours après visite terrain.</p></div>
+        </div>
+        <div class="service revele">
+          <div class="service__icone"><svg viewBox="0 0 24 24" fill="#1b5e3a"><path d="M12 3 2 9l10 6 10-6-10-6zm0 8L4 7l8-4 8 4-8 4zm0 3L4 10l8 5 8-5-8 4z"/></svg></div>
+          <div><h3>Espaces verts & parcs urbains</h3><p>Entretien des espaces verts, parcs et squares de la ville. Demandes de réhabilitation d'un espace public dégradé à adresser au service technique avec photos et localisation précise.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- D. MARCHÉS & COMMERCE -->
+  <section class="section" id="marches">
+    <div class="conteneur">
+      <h2 class="section-titre">D — Marchés & Activités économiques</h2>
+      <p class="section-intro">La mairie encadre l'activité commerciale sur son territoire : marché central, licences, autorisations d'exploitation.</p>
+      <div class="grille grille--3">
+        <div class="service revele">
+          <div class="service__icone"><svg viewBox="0 0 24 24" fill="#1b5e3a"><path d="M5 21h14v-2H5v2zm0-4h14v-2H5v2zm0-4h14v-2H5v2zm0-4h14V7H5v2zm0-6v2h14V3H5z"/></svg></div>
+          <div><h3>Attribution de place au marché</h3><p>Demande d'emplacement fixe ou volant au marché central. <strong>Pièces :</strong> CNI, description de l'activité, paiement de la redevance trimestrielle. Contact : régie du marché central, mairie.</p></div>
+        </div>
+        <div class="service revele">
+          <div class="service__icone"><svg viewBox="0 0 24 24" fill="#1b5e3a"><path d="M9 11.5A1.5 1.5 0 1 1 9 8.5a1.5 1.5 0 0 1 0 3zm6 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zM22 9V7h-2V5a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-2h2v-2h-2v-2h2v-2h-2V9h2z"/></svg></div>
+          <div><h3>Licence de commerce & patente</h3><p>Demande d'autorisation d'exercer une activité commerciale ou artisanale. <strong>Pièces :</strong> extrait de registre de commerce (RCCM), bail commercial, CNI. Délai : 15 jours. Renouvellement annuel.</p></div>
+        </div>
+        <div class="service revele">
+          <div class="service__icone"><svg viewBox="0 0 24 24" fill="#1b5e3a"><path d="M20 3H4v10a5 5 0 0 0 5 5h6a5 5 0 0 0 5-5V3zm-2 2v3h-5V5h5zm-7 0v3H6V5h5zm2 8a3 3 0 0 1-3 3H9a3 3 0 0 1-3-3V10h12v3z"/></svg></div>
+          <div><h3>Autorisation d'ouverture d'établissement</h3><p>Obligatoire pour tout commerce, restaurant, hôtel ou établissement recevant du public. <strong>Pièces :</strong> plan des locaux, conformité électrique, avis hygiène. Délai : 30 jours (visite de conformité).</p></div>
+        </div>
+        <div class="service revele">
+          <div class="service__icone"><svg viewBox="0 0 24 24" fill="#1b5e3a"><path d="M6.5 10h-2v7h2v-7zm6 0h-2v7h2v-7zm8.5 9H2v2h19v-2zm-2.5-9h-2v7h2v-7zM11.5 1L2 6v2h19V6l-9.5-5z"/></svg></div>
+          <div><h3>Autorisation de débit de boissons</h3><p>Pour les bars, restaurants et commerces vendant de l'alcool. <strong>Pièces :</strong> extrait de casier judiciaire vierge, bail, attestation d'hygiène, RCCM. Délai : 21 jours.</p></div>
+        </div>
+        <div class="service revele">
+          <div class="service__icone"><svg viewBox="0 0 24 24" fill="#1b5e3a"><path d="M20 6h-2.18c.07-.44.18-.88.18-1.5C18 2.46 15.54 0 12.5 0S7 2.46 7 4.5c0 .62.11 1.06.18 1.5H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2z"/></svg></div>
+          <div><h3>Commerce ambulant & colportage</h3><p>Autorisation de vente itinérante sur la voie publique ou dans les marchés sans emplacement fixe. <strong>Pièces :</strong> CNI, description des produits vendus. Redevance journalière ou hebdomadaire.</p></div>
+        </div>
+        <div class="service revele">
+          <div class="service__icone"><svg viewBox="0 0 24 24" fill="#1b5e3a"><path d="M12 1L3 5v6c0 5.25 3.75 10.15 9 11.35 5.25-1.2 9-6.1 9-11.35V5l-9-4zm-2 14l-3-3 1.41-1.41L10 12.17l5.59-5.58L17 8l-7 7z"/></svg></div>
+          <div><h3>Contrôle hygiène alimentaire</h3><p>La mairie effectue des contrôles réguliers de l'hygiène dans les commerces alimentaires, restaurants et au marché. Un carnet sanitaire est obligatoire pour les vendeurs de denrées alimentaires.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- E. HYGIÈNE & ENVIRONNEMENT -->
+  <section class="section section--alt" id="hygiene">
+    <div class="conteneur">
+      <h2 class="section-titre">E — Hygiène, Déchets & Environnement</h2>
+      <p class="section-intro">Collecte des ordures, assainissement, gestion des cimetières et protection de l'environnement urbain.</p>
+      <div class="grille grille--3">
+        <div class="service revele">
+          <div class="service__icone"><svg viewBox="0 0 24 24" fill="#1b5e3a"><path d="M15 4V3H9v1H4v2h1l1 13a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-13h1V4h-5zm-5 12H8l-.5-10H10v10zm6.5 0H14V6h2.5l-.5 10z"/></svg></div>
+          <div><h3>Collecte des ordures ménagères</h3><p>Ramassage porte-à-porte dans les quartiers desservis. Pour signaler un arrêt de collecte ou demander l'extension du service à votre quartier, contactez le service hygiène au +241 01 00 00 05. Dépôt interdit hors des points de collecte.</p></div>
+        </div>
+        <div class="service revele">
+          <div class="service__icone"><svg viewBox="0 0 24 24" fill="#1b5e3a"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm1 14h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg></div>
+          <div><h3>Assainissement & fosses septiques</h3><p>Déclaration des systèmes d'assainissement autonomes (fosses septiques, puits perdants). Contrôle de conformité sur demande. Vidange par prestataire agréé obligatoire tous les 3 ans.</p></div>
+        </div>
+        <div class="service revele">
+          <div class="service__icone"><svg viewBox="0 0 24 24" fill="#1b5e3a"><path d="M17 8C8 10 5.9 16.17 3.82 21H5.5C6 19 7 17 8 16c3.04 3.04 5.5 5 10 6V8h-1z"/></svg></div>
+          <div><h3>Reboisement & espaces verts</h3><p>La mairie organise des journées de reboisement et entretient les espaces verts publics. Les associations et particuliers souhaitant participer aux actions de reboisement peuvent contacter le service environnement.</p></div>
+        </div>
+        <div class="service revele">
+          <div class="service__icone"><svg viewBox="0 0 24 24" fill="#1b5e3a"><path d="M12 22C6.49 22 2 17.51 2 12S6.49 2 12 2s10 4.04 10 9c0 3.31-2.69 6-6 6h-1.77c-.28 0-.5.22-.5.5 0 .12.05.23.13.33.41.47.64 1.06.64 1.67A2.5 2.5 0 0 1 12 22z"/></svg></div>
+          <div><h3>Lutte anti-vectorielle</h3><p>Opérations de démoustication, assèchement des gîtes larvaires et sensibilisation à la prévention du paludisme. Campagnes périodiques organisées par la mairie en coordination avec la direction provinciale de la santé.</p></div>
+        </div>
+        <div class="service revele">
+          <div class="service__icone"><svg viewBox="0 0 24 24" fill="#1b5e3a"><path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm-7 3a3 3 0 1 1 0 6 3 3 0 0 1 0-6zm5 12H7v-.5c0-2.5 3.3-4 5-4s5 1.5 5 4v.5z"/></svg></div>
+          <div><h3>Cimetières & inhumation</h3><p>Autorisation d'inhumation délivrée par la mairie sur présentation de l'acte de décès. Attribution de concessions de cimetière (concession temporaire 5 ans ou perpétuelle). Contact : service état civil.</p></div>
+        </div>
+        <div class="service revele">
+          <div class="service__icone"><svg viewBox="0 0 24 24" fill="#1b5e3a"><path d="M12 1L3 5v6c0 5.25 3.75 10.15 9 11.35 5.25-1.2 9-6.1 9-11.35V5l-9-4z"/></svg></div>
+          <div><h3>Autorisations de nuisances sonores</h3><p>Pour les fêtes, concerts ou travaux bruyants en dehors des horaires réglementaires. Demande en mairie 5 jours avant. Horaires autorisés : 8h–22h. Au-delà, autorisation spéciale requise.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- F. ACTION SOCIALE -->
+  <section class="section" id="social">
+    <div class="conteneur">
+      <h2 class="section-titre">F — Action sociale & Solidarité</h2>
+      <p class="section-intro">La mairie accompagne les habitants les plus vulnérables : familles en difficulté, personnes âgées, personnes handicapées et enfants.</p>
+      <div class="grille grille--3">
+        <div class="service revele">
+          <div class="service__icone"><svg viewBox="0 0 24 24" fill="#1b5e3a"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5 2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53L12 21.35z"/></svg></div>
+          <div><h3>Aide sociale d'urgence</h3><p>Soutien alimentaire, vestimentaire ou financier ponctuel pour les familles en situation de grande précarité. Demande auprès du service action sociale sur présentation d'une attestation d'indigence.</p></div>
+        </div>
+        <div class="service revele">
+          <div class="service__icone"><svg viewBox="0 0 24 24" fill="#1b5e3a"><path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm-2 10H7v-2h10v2zm0-4H7V7h10v2z"/></svg></div>
+          <div><h3>Attestation d'indigence</h3><p>Document officiel attestant de la situation de pauvreté d'un foyer, permettant l'accès à des services gratuits (santé, scolarité). <strong>Pièces :</strong> CNI, justificatif de situation (absence de revenu), enquête sociale.</p></div>
+        </div>
+        <div class="service revele">
+          <div class="service__icone"><svg viewBox="0 0 24 24" fill="#1b5e3a"><path d="M20 9V7c0-1.1-.9-2-2-2h-3c0-1.66-1.34-3-3-3S9 3.34 9 5H6c-1.1 0-2 .9-2 2v2c-1.66 0-3 1.34-3 3s1.34 3 3 3v4c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-4c1.66 0 3-1.34 3-3s-1.34-3-3-3z"/></svg></div>
+          <div><h3>Personnes handicapées</h3><p>Accompagnement à l'obtention de la carte nationale d'invalidité. Soutien pour l'accès aux droits (CNSS, soins, scolarité adaptée). Contact : service social, en lien avec la direction provinciale des affaires sociales (DGAS).</p></div>
+        </div>
+        <div class="service revele">
+          <div class="service__icone"><svg viewBox="0 0 24 24" fill="#1b5e3a"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 16c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7zm.5-11H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg></div>
+          <div><h3>Aide aux personnes âgées</h3><p>Visites à domicile, assistance aux démarches administratives, distribution de colis alimentaires lors des fêtes nationales. Programme coordonné avec les associations de quartier et les services du MINAS.</p></div>
+        </div>
+        <div class="service revele">
+          <div class="service__icone"><svg viewBox="0 0 24 24" fill="#1b5e3a"><path d="M4 13h2v7H4zm4-4h2v11H8zm4-5h2v16h-2zm4 8h2v8h-2zm4-4h2v12h-2z"/></svg></div>
+          <div><h3>Protection de l'enfance</h3><p>Signalement de situations de maltraitance, d'abandon ou de déscolarisation. La mairie coordonne avec la DGAS et la brigade des mineurs (Gendarmerie) pour la prise en charge des enfants en danger.</p></div>
+        </div>
+        <div class="service revele">
+          <div class="service__icone"><svg viewBox="0 0 24 24" fill="#1b5e3a"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></div>
+          <div><h3>Logement d'urgence</h3><p>Hébergement temporaire pour les personnes victimes de sinistre (incendie, inondation) ou d'expulsion injustifiée, en coordination avec le gouvernorat et les services sociaux de l'État. Délai de prise en charge : 24–48 h.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- G. CULTURE, SPORT & JEUNESSE -->
+  <section class="section section--alt" id="culture-sport">
+    <div class="conteneur">
+      <h2 class="section-titre">G — Culture, Sport & Jeunesse</h2>
+      <p class="section-intro">La mairie met à disposition des équipements et soutient les associations culturelles, sportives et de jeunesse de la commune.</p>
+      <div class="grille grille--3">
+        <div class="service revele">
+          <div class="service__icone"><svg viewBox="0 0 24 24" fill="#1b5e3a"><path d="M4 2h16a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm8 13l7-4-7-4v8z"/></svg></div>
+          <div><h3>Salle des fêtes municipale</h3><p>Location pour mariages, conférences, cérémonies et événements privés. Réservation auprès du secrétariat de mairie. Tarif selon nature de l'événement (privé, associatif, institutionnel). Capacité : environ 300 personnes.</p></div>
+        </div>
+        <div class="service revele">
+          <div class="service__icone"><svg viewBox="0 0 24 24" fill="#1b5e3a"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg></div>
+          <div><h3>Autorisation de manifestations culturelles</h3><p>Pour concerts, spectacles, fêtes de quartier et expositions sur l'espace public. Demande 15 jours avant. Vérification de conformité (sécurité, hygiène, bruit). Gratuit pour les associations à but non lucratif.</p></div>
+        </div>
+        <div class="service revele">
+          <div class="service__icone"><svg viewBox="0 0 24 24" fill="#1b5e3a"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm-8 2.75c1.24 0 2.25 1.01 2.25 2.25S13.24 11.25 12 11.25 9.75 10.24 9.75 9 10.76 6.75 12 6.75zM17 17H7v-1.5c0-1.67 3.33-2.5 5-2.5s5 .83 5 2.5V17z"/></svg></div>
+          <div><h3>Soutien aux associations</h3><p>Subventions annuelles aux associations culturelles, sportives et de jeunesse déclarées en préfecture. Dossier à déposer avant le 31 janvier de chaque année. Critères : activité d'intérêt général, rapport d'activités.</p></div>
+        </div>
+        <div class="service revele">
+          <div class="service__icone"><svg viewBox="0 0 24 24" fill="#1b5e3a"><path d="M20 10c0 5.52-7.27 11.29-7.74 11.67L12 22l-.26-.33C11.27 21.29 4 15.52 4 10a8 8 0 0 1 16 0z"/></svg></div>
+          <div><h3>Équipements sportifs</h3><p>Accès aux terrains de football, de basketball et à la piscine municipale (selon disponibilité). Réservation pour les clubs et écoles par courrier officiel à la direction des sports. Créneaux prioritaires aux associations déclarées.</p></div>
+        </div>
+        <div class="service revele">
+          <div class="service__icone"><svg viewBox="0 0 24 24" fill="#1b5e3a"><path d="M12 3 2 9l10 6 10-6-10-6zm0 8L4 7l8-4 8 4-8 4zm0 3L4 10l8 5 8-5-8 4z"/></svg></div>
+          <div><h3>Bibliothèque & médiathèque</h3><p>Accès libre à la bibliothèque municipale : livres, revues, ouvrages scolaires. Ouverte du lundi au vendredi 8h–17h et le samedi matin. Carte d'adhésion gratuite sur présentation d'une pièce d'identité.</p></div>
+        </div>
+        <div class="service revele">
+          <div class="service__icone"><svg viewBox="0 0 24 24" fill="#1b5e3a"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 14h-2v-5h2v5zm0-7h-2V7h2v2z"/></svg></div>
+          <div><h3>Maison de la jeunesse</h3><p>Espace dédié aux 15–35 ans : formations, ateliers numériques, accompagnement à l'emploi et à l'entrepreneuriat, salle de réunion pour les associations de jeunesse. Ouvert du lundi au samedi.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- H. ÉDUCATION & PETITE ENFANCE -->
+  <section class="section" id="education">
+    <div class="conteneur">
+      <h2 class="section-titre">H — Éducation & Petite enfance</h2>
+      <p class="section-intro">La mairie contribue à l'éducation des enfants en entretenant les écoles, en organisant la restauration scolaire et en soutenant les familles.</p>
+      <div class="grille grille--2">
+        <div class="service revele">
+          <div class="service__icone"><svg viewBox="0 0 24 24" fill="#1b5e3a"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3 1 9l11 6 9-4.91V17h2V9L12 3z"/></svg></div>
+          <div>
+            <h3>Inscription scolaire</h3>
+            <p>La mairie tient à jour les listes d'inscription dans les écoles primaires publiques. <strong>Écoles publiques de Koula-Moutou :</strong> École Bakèle, École Mandji et plusieurs autres. Inscription au bureau de la circonscription scolaire avec acte de naissance et carnet de vaccination.</p>
+          </div>
+        </div>
+        <div class="service revele">
+          <div class="service__icone"><svg viewBox="0 0 24 24" fill="#1b5e3a"><path d="M11 9H9V2H7v7H5V2H3v7a4 4 0 0 0 3.5 3.97V22h2v-9.03A4 4 0 0 0 12 9V2h-1v7zm5-3v8h2.5v8H21V2c-2.76 0-5 2.24-5 4z"/></svg></div>
+          <div>
+            <h3>Restauration scolaire</h3>
+            <p>Cantines scolaires dans les établissements primaires. Inscription en début d'année scolaire. Tarif subventionné pour les familles bénéficiaires d'une attestation d'indigence. Menu quotidien composé de produits locaux.</p>
+          </div>
+        </div>
+        <div class="service revele">
+          <div class="service__icone"><svg viewBox="0 0 24 24" fill="#1b5e3a"><path d="M20 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2zm0 11H4v-9h16v9zM4 5h16v2H4z"/></svg></div>
+          <div>
+            <h3>Aide aux fournitures scolaires</h3>
+            <p>Distribution annuelle de kits scolaires (cahiers, stylos, tablettes ardoise) aux élèves des familles en difficulté, en partenariat avec le MENESR et les partenaires privés. Demande via le service action sociale.</p>
+          </div>
+        </div>
+        <div class="service revele">
+          <div class="service__icone"><svg viewBox="0 0 24 24" fill="#1b5e3a"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg></div>
+          <div>
+            <h3>Établissements d'enseignement de la ville</h3>
+            <p><strong>Lycées :</strong> Lycée d'État Jean Stanislas Migolet, Lycée d'État de Koula-Moutou.<br>
+            <strong>Collèges :</strong> Collège Notre-Dame de la Salette, Collège Moutou Mambou.<br>
+            <strong>Enseignement supérieur :</strong> IUST (Institut Universitaire des Sciences et Technologies, ouvert nov. 2024) ; Centre Universitaire de Koula-Moutou (CUK, ouverture 2025–2026, rattaché à l'Université de Masuku).</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- I. SANTÉ PUBLIQUE -->
+  <section class="section section--alt" id="sante">
+    <div class="conteneur">
+      <h2 class="section-titre">I — Santé publique</h2>
+      <p class="section-intro">La mairie coordonne les actions de santé publique et soutient les établissements de soins de la commune.</p>
+      <div class="grille grille--2">
+        <div class="service revele">
+          <div class="service__icone"><svg viewBox="0 0 24 24" fill="#1b5e3a"><path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm-7 3a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm2 14h-4v-2h4v2zm0-4h-4v-6h4v6z"/></svg></div>
+          <div>
+            <h3>Centre Hospitalier Régional Paul Moukambi</h3>
+            <p>Principal établissement de santé de la province. Services : consultations générales et spécialisées, maternité, chirurgie, urgences, laboratoire, radiologie, unité de transfusion sanguine. Tél. : +241 01 00 00 10. Urgences 24h/24.</p>
+          </div>
+        </div>
+        <div class="service revele">
+          <div class="service__icone"><svg viewBox="0 0 24 24" fill="#1b5e3a"><path d="M10.5 13H8v-3h2.5V7.5h3V10H16v3h-2.5v2.5h-3V13zM12 2A10 10 0 1 0 22 12 10 10 0 0 0 12 2z"/></svg></div>
+          <div>
+            <h3>Centres de santé de quartier</h3>
+            <p>Réseau de centres de santé de proximité répartis dans les quartiers : soins de base, consultations prénatales, vaccination des enfants et surveillance de la croissance (pesées). Centre de Santé CNSS pour les assurés sociaux.</p>
+          </div>
+        </div>
+        <div class="service revele">
+          <div class="service__icone"><svg viewBox="0 0 24 24" fill="#1b5e3a"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg></div>
+          <div>
+            <h3>Vaccination & PEV</h3>
+            <p>Le Programme Élargi de Vaccination est assuré dans tous les centres de santé. Vaccins obligatoires (DTCoq, polio, rougeole, fièvre jaune, hépatite B) gratuits pour les enfants de 0 à 5 ans. Campagnes ponctuelles de masse organisées par la mairie.</p>
+          </div>
+        </div>
+        <div class="service revele">
+          <div class="service__icone"><svg viewBox="0 0 24 24" fill="#1b5e3a"><path d="M12 22C6.49 22 2 17.51 2 12S6.49 2 12 2s10 4.04 10 9c0 3.31-2.69 6-6 6h-1.77c-.28 0-.5.22-.5.5 0 .12.05.23.13.33.41.47.64 1.06.64 1.67A2.5 2.5 0 0 1 12 22z"/></svg></div>
+          <div>
+            <h3>Santé maternelle & infantile</h3>
+            <p>Consultations prénatales, suivi de grossesse, accouchement assisté et suivi post-natal. Sensibilisation à l'allaitement maternel et à la nutrition de l'enfant. Programme de planification familiale disponible dans les centres de santé.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- J. NUMÉRIQUE & E-SERVICES -->
+  <section class="section" id="numerique">
+    <div class="conteneur">
+      <h2 class="section-titre">J — Services numériques & e-Administration</h2>
+      <p class="section-intro">La mairie de Koula-Moutou engage sa transformation numérique pour rapprocher l'administration du citoyen.</p>
+      <div class="grille grille--3">
+        <div class="service revele">
+          <div class="service__icone"><svg viewBox="0 0 24 24" fill="#1b5e3a"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zM4 18V8l8 5 8-5v10H4z"/></svg></div>
+          <div><h3>CDI Paul Kouya</h3><p>Centre de Documentation et d'Information numérique ouvert à tous les citoyens. Accès Internet, postes informatiques, imprimante, scanner. Animations numériques pour les jeunes et les entrepreneurs. Ouvert lundi–samedi.</p></div>
+        </div>
+        <div class="service revele">
+          <div class="service__icone"><svg viewBox="0 0 24 24" fill="#1b5e3a"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3a4.237 4.237 0 0 0-6 0zm-4-4 2 2a7.074 7.074 0 0 1 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg></div>
+          <div><h3>WiFi public municipal</h3><p>Accès WiFi gratuit dans les espaces publics équipés (mairie, marché central, centre culturel). Connexion sur présentation du numéro CNI. Débit limité, usage administratif et éducatif prioritaire.</p></div>
+        </div>
+        <div class="service revele">
+          <div class="service__icone"><svg viewBox="0 0 24 24" fill="#1b5e3a"><path d="M17 8C8 10 5.9 16.17 3.82 21H5.5C6 19 7 17 8 16c3.04 3.04 5.5 5 10 6V8h-1z"/></svg></div>
+          <div><h3>IUST — Formation numérique supérieure</h3><p>L'Institut Universitaire des Sciences et Technologies (IUST), ouvert en novembre 2024, forme des techniciens supérieurs en informatique, productique, architecture et énergies renouvelables. Filières DUT bac+2. Inscriptions annuelles.</p></div>
+        </div>
+        <div class="service revele">
+          <div class="service__icone"><svg viewBox="0 0 24 24" fill="#1b5e3a"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/></svg></div>
+          <div><h3>Formulaires en ligne</h3><p>Téléchargez les formulaires de demande (permis de construire, licence de commerce, formulaire AOT) sur ce portail ou au guichet d'accueil de la mairie. Le dépôt physique reste obligatoire pour les démarches nécessitant un original.</p></div>
+        </div>
+        <div class="service revele">
+          <div class="service__icone"><svg viewBox="0 0 24 24" fill="#1b5e3a"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg></div>
+          <div><h3>Lettre d'information officielle</h3><p>Abonnez-vous à la lettre mensuelle de la mairie pour recevoir les communiqués officiels, les délibérations du Conseil municipal, les appels d'offres et l'agenda des événements. Inscription sur <a href="actualites.html">la page Actualités</a>.</p></div>
+        </div>
+        <div class="service revele">
+          <div class="service__icone"><svg viewBox="0 0 24 24" fill="#1b5e3a"><path d="M3 18c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2v3H3zm0-6c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2v3c-2 0-2-2-4-2s-2 2-4 2-2-2-4-2-2 2-4 2z"/></svg></div>
+          <div><h3>Affichage légal & publications</h3><p>Les actes municipaux (arrêtés, délibérations, appels d'offres) sont affichés au panneau officiel de la mairie (hall d'entrée) et sur le tableau d'affichage extérieur. Accès libre du lundi au vendredi.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- K. SÉCURITÉ CIVILE -->
+  <section class="section section--alt" id="securite">
+    <div class="conteneur">
+      <h2 class="section-titre">K — Sécurité civile & Urgences</h2>
+      <p class="section-intro">La mairie coordonne la réponse aux urgences et travaille avec les forces de l'ordre pour la sécurité des habitants.</p>
+      <div class="grille grille--3">
+        <div class="service revele">
+          <div class="service__icone"><svg viewBox="0 0 24 24" fill="#1b5e3a"><path d="M20 15.5c-1.25 0-2.45-.2-3.57-.57a1 1 0 0 0-1.02.24l-2.2 2.2a15.074 15.074 0 0 1-6.59-6.59l2.2-2.21a1 1 0 0 0 .25-1.02A11.36 11.36 0 0 1 8.5 4a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1 17 17 0 0 0 17 17 1 1 0 0 0 1-1v-3.5a1 1 0 0 0-1-1z"/></svg></div>
+          <div><h3>Numéros d'urgence</h3><p><strong>SAMU / Urgences médicales :</strong> 1300<br><strong>Pompiers :</strong> 18<br><strong>Gendarmerie :</strong> 1730<br><strong>Police nationale :</strong> 1730<br><strong>Mairie — urgences :</strong> +241 06 00 00 00</p></div>
+        </div>
+        <div class="service revele">
+          <div class="service__icone"><svg viewBox="0 0 24 24" fill="#1b5e3a"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg></div>
+          <div><h3>Gestion des catastrophes naturelles</h3><p>En cas d'inondation, d'éboulement ou de sinistre majeur, la cellule de crise de la mairie est activée. Évacuations coordonnées avec la préfecture et la gendarmerie. Abris de première urgence disponibles au centre culturel municipal.</p></div>
+        </div>
+        <div class="service revele">
+          <div class="service__icone"><svg viewBox="0 0 24 24" fill="#1b5e3a"><path d="M12 1L3 5v6c0 5.25 3.75 10.15 9 11.35 5.25-1.2 9-6.1 9-11.35V5l-9-4zm-2 14l-3-3 1.41-1.41L10 12.17l5.59-5.58L17 8l-7 7z"/></svg></div>
+          <div><h3>Prévention incendie</h3><p>Sensibilisation à la prévention des risques d'incendie dans les habitations et commerces. Les constructions recevant du public doivent disposer d'extincteurs et de sorties de secours conformes. Visite de contrôle sur demande.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- L. DÉVELOPPEMENT ÉCONOMIQUE LOCAL -->
+  <section class="section section--vert" id="dev-eco">
+    <div class="conteneur">
+      <h2 class="section-titre">L — Développement économique local</h2>
+      <p class="section-intro">La mairie accompagne les entrepreneurs, les investisseurs et les porteurs de projets qui souhaitent s'implanter à Koula-Moutou.</p>
+      <div class="grille grille--3">
+        <div class="carte revele"><div class="carte__corps">
+          <h3>Guichet d'accueil investisseurs</h3>
+          <p>Premier contact pour tout projet d'investissement ou d'implantation économique. La mairie oriente vers les services compétents (préfecture, gouvernorat, ANPI-Gabon) et facilite les démarches administratives locales. Contact : secrétariat général.</p>
+        </div></div>
+        <div class="carte revele"><div class="carte__corps">
+          <h3>Appui aux micro-entrepreneurs</h3>
+          <p>Accompagnement à la formalisation des petites activités (inscription RCCM, obtention de patente, ouverture de compte professionnel). Partenariat avec la chambre de commerce de la province et les structures de microfinance locales.</p>
+        </div></div>
+        <div class="carte revele"><div class="carte__corps">
+          <h3>Coopération décentralisée</h3>
+          <p>La mairie est ouverte aux partenariats avec d'autres communes (jumelages), ONG et organisations internationales pour le financement de projets de développement local. Dossiers à adresser au secrétariat général.</p>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HORAIRES -->
+  <section class="section" id="horaires">
+    <div class="conteneur">
+      <h2 class="section-titre">Horaires d'accueil du public</h2>
+      <table class="tableau revele">
+        <thead><tr><th>Jour</th><th>Matin</th><th>Après-midi</th><th>Services disponibles</th></tr></thead>
+        <tbody>
+          <tr><td>Lundi – Vendredi</td><td>7h30 – 12h00</td><td>13h00 – 15h30</td><td>Tous services</td></tr>
+          <tr><td>Samedi</td><td>8h00 – 12h00</td><td>Fermé</td><td>État civil uniquement</td></tr>
+          <tr><td>Dimanche & jours fériés</td><td colspan="2" style="text-align:center">Fermé</td><td>Urgences état civil sur appel</td></tr>
+        </tbody>
+      </table>
+      <div class="texte-centre mt-40">
+        <a href="contact.html" class="btn btn--vert">Contacter un service spécifique</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="pied" id="site-pied"></footer>
+  <script src="js/foret-ambiance.js"></script>
+  <script src="js/composants.js"></script>
+</body>
+</html>
