@@ -1,4 +1,4 @@
-/* ===================================================================
+﻿/* ===================================================================
    Composants partagés : bandeau État, en-tête, liseré tricolore,
    pied de page, bouton d'ambiance sonore, animations, compteurs.
    Chaque page définit <body data-page="..."> pour l'onglet actif.
@@ -48,7 +48,7 @@
           '<svg viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>' +
         '</button>' +
         '<nav class="menu" id="nav-principale">' + liens +
-          '<button class="icbtn" id="btn-son" aria-pressed="false" title="Activer l\'ambiance sonore de la forêt">' +
+          '<button class="icbtn" id="btn-son" aria-pressed="false" title="Forêt">' +
             '<svg viewBox="0 0 24 24"><path d="M3 10v4h4l5 5V5L7 10H3zm13.5 2A4.5 4.5 0 0 0 14 8v8a4.5 4.5 0 0 0 2.5-4z"/></svg>' +
             '<span id="btn-son-texte">Forêt</span>' +
           '</button>' +
@@ -78,14 +78,14 @@
             '<a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.2-.4-4.7a2.5 2.5 0 0 0-1.8-1.8C19.3 5 12 5 12 5s-7.3 0-8.8.5A2.5 2.5 0 0 0 1.4 7.3C1 8.8 1 12 1 12s0 3.2.4 4.7a2.5 2.5 0 0 0 1.8 1.8C4.7 19 12 19 12 19s7.3 0 8.8-.5a2.5 2.5 0 0 0 1.8-1.8C23 15.2 23 12 23 12zM9.8 15.3V8.7l5.7 3.3-5.7 3.3z"/></svg></a>' +
           '</div>' +
         '</div>' +
-        '<div><h4>Démarches</h4><ul>' +
+        '<div><h3>Démarches</h3><ul>' +
           '<li><a href="administration.html">État civil</a></li>' +
           '<li><a href="administration.html">Acte de naissance</a></li>' +
           '<li><a href="administration.html">Permis de construire</a></li>' +
           '<li><a href="contact.html">Réclamations</a></li>' +
         '</ul></div>' +
-        '<div><h4>Navigation</h4><ul>' + liensRapides + '</ul></div>' +
-        '<div><h4>Hôtel de Ville</h4><ul>' +
+        '<div><h3>Navigation</h3><ul>' + liensRapides + '</ul></div>' +
+        '<div><h3>Hôtel de Ville</h3><ul>' +
           '<li>Centre-ville, Koula-Moutou</li>' +
           '<li>Province de l\'Ogooué-Lolo, Gabon</li>' +
           '<li>📞 +241 01 00 00 00</li>' +
