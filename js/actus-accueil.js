@@ -13,7 +13,6 @@
         if (!arts || !arts.length) return;
         arts = arts.slice(0, 6);
         injecterCarrousel(arts);
-        injecterBandeau(arts);
         if (window.initCarrousel) window.initCarrousel();
       })
       .catch(function () { /* API absente : contenu statique conservé */ });
@@ -47,30 +46,6 @@
       slide.querySelector(".carrousel__desc").textContent = a.chapeau || (a.contenu || "").slice(0, 140);
       piste.insertBefore(slide, piste.firstChild);
     }
-  }
-
-  function injecterBandeau(arts) {
-    var track = document.querySelector(".ticker .ticker__track");
-    if (!track) return;
-    var enfants = track.children;
-    var moitie = Math.floor(enfants.length / 2) || enfants.length;
-    var base = [];
-    for (var j = 0; j < moitie; j++) base.push(enfants[j].cloneNode(true));
-
-    var cms = arts.map(function (a) {
-      var lien = document.createElement("a");
-      lien.href = "article.html?id=" + a.id;
-      var b = document.createElement("b");
-      b.textContent = a.categorie || "Actualité";
-      lien.appendChild(b);
-      lien.appendChild(document.createTextNode(" " + a.titre));
-      return lien;
-    });
-
-    var seq = cms.concat(base);
-    track.innerHTML = "";
-    seq.forEach(function (n) { track.appendChild(n.cloneNode(true)); });
-    seq.forEach(function (n) { track.appendChild(n.cloneNode(true)); });
   }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", lancer);

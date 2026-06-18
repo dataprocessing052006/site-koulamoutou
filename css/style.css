@@ -78,6 +78,8 @@ img { max-width: 100%; display: block; }
 .gouv a { color: #cfe0f5; }
 .gouv a:hover { color: #fff; }
 .gouv__accueil { color: #fff; font-weight: 700; }
+.gouv__connexion { color: var(--or-l); font-weight: 700; }
+.gouv__connexion:hover { color: #fff; }
 .gouv__r { display: flex; gap: 16px; align-items: center; }
 
 /* ====================== EN-TÊTE ====================== */

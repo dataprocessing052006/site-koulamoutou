@@ -37,6 +37,7 @@
           '<a href="index.html" class="gouv__accueil">🏠 Accueil</a>' +
           '<span>Province de l\'Ogooué-Lolo</span>' +
           '<a href="contact.html">Nous écrire</a>' +
+          '<a href="admin.html" class="gouv__connexion">🔒 Connexion</a>' +
           '<a href="#" aria-label="Langue">FR</a>' +
         '</div>' +
       '</div></div>' +
@@ -66,6 +67,57 @@
 
     var conteneur = document.getElementById("site-entete");
     if (conteneur) conteneur.innerHTML = html;
+  }
+
+  /* ---------------- BANDEAU D'ACTUALITÉS (toutes les pages) ---------------- */
+  var ACTUS_STATIQUES = [
+    { href: "actu-voirie.html", cat: "Voirie", titre: "Réhabilitation des voies du centre-ville" },
+    { href: "actu-reboisement.html", cat: "Environnement", titre: "Journée de reboisement sur les berges" },
+    { href: "actu-festival.html", cat: "Culture", titre: "Festival des cultures de l'Ogooué-Lolo" },
+    { href: "actu-marche.html", cat: "Économie", titre: "Rénovation du marché central" },
+    { href: "actu-vaccination.html", cat: "Santé", titre: "Campagne de vaccination et prévention" },
+    { href: "actu-ecoles.html", cat: "Éducation", titre: "Remise de fournitures scolaires" }
+  ];
+
+  function remplirBandeau(track, items) {
+    function bloc() {
+      return items.map(function (a) {
+        var lien = document.createElement("a");
+        lien.href = a.href;
+        var b = document.createElement("b");
+        b.textContent = a.cat || "Actualité";
+        lien.appendChild(b);
+        lien.appendChild(document.createTextNode(" " + a.titre));
+        return lien.outerHTML;
+      }).join("");
+    }
+    track.innerHTML = bloc() + bloc(); // deux copies => boucle continue
+  }
+
+  function construireBandeau() {
+    var entete = document.getElementById("site-entete");
+    if (!entete || document.querySelector(".ticker")) return;
+    var ticker = document.createElement("div");
+    ticker.className = "ticker";
+    ticker.setAttribute("aria-label", "Dernières actualités");
+    ticker.innerHTML = '<span class="ticker__label">📢 Actualités</span>' +
+      '<div class="ticker__mask"><div class="ticker__track"></div></div>';
+    entete.parentNode.insertBefore(ticker, entete.nextSibling);
+
+    var track = ticker.querySelector(".ticker__track");
+    remplirBandeau(track, ACTUS_STATIQUES); // contenu statique immédiat
+
+    // puis les articles publiés du back-office (les plus récents en tête)
+    fetch("/api/articles")
+      .then(function (r) { return r.ok ? r.json() : []; })
+      .then(function (arts) {
+        if (!arts || !arts.length) return;
+        var cms = arts.slice(0, 8).map(function (a) {
+          return { href: "article.html?id=" + a.id, cat: a.categorie || "Actualité", titre: a.titre };
+        });
+        remplirBandeau(track, cms.concat(ACTUS_STATIQUES));
+      })
+      .catch(function () {});
   }
 
   /* ---------------- PIED DE PAGE ---------------- */
@@ -341,6 +393,7 @@
 
   document.addEventListener("DOMContentLoaded", function () {
     construireEntete();
+    construireBandeau();
     construirePied();
     brancherInteractions();
     demarrerMeteoHeure();
