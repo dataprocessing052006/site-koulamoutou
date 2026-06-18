@@ -129,6 +129,27 @@ img { max-width: 100%; display: block; }
 .chips a { font-size: 0.84rem; background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.3); padding: 7px 14px; border-radius: 30px; color: #fff; font-weight: 600; }
 .chips a:hover { background: rgba(255,255,255,0.26); color: #fff; }
 
+/* ====================== WIDGET MÉTÉO & HEURE ====================== */
+.widget-mh {
+  position: absolute; top: 22px; right: 22px; z-index: 3;
+  display: flex; align-items: center; gap: 16px;
+  background: rgba(8,40,22,0.55); backdrop-filter: blur(10px);
+  border: 1px solid rgba(231,200,105,0.4); border-radius: 14px;
+  padding: 12px 18px; color: #fff; box-shadow: var(--ombre);
+  max-width: calc(100% - 44px);
+}
+.widget-mh__heure { display: flex; flex-direction: column; line-height: 1.1; }
+.widget-mh__h { font-family: var(--police-titre); font-size: 1.5rem; font-weight: 700; font-variant-numeric: tabular-nums; letter-spacing: 0.02em; }
+.widget-mh__d { font-size: 0.72rem; color: var(--or-l); text-transform: capitalize; margin-top: 2px; }
+.widget-mh__sep { width: 1px; align-self: stretch; background: rgba(255,255,255,0.25); }
+.widget-mh__meteo { display: flex; flex-direction: column; line-height: 1.15; }
+.widget-mh__ico { font-size: 1.4rem; }
+.widget-mh__temp { font-family: var(--police-titre); font-size: 1.25rem; font-weight: 700; }
+.widget-mh__desc { font-size: 0.68rem; color: #d7e8de; max-width: 180px; }
+@media (max-width: 768px) {
+  .widget-mh { position: relative; top: auto; right: auto; margin: 0 22px 18px; justify-content: center; max-width: none; }
+}
+
 /* ====================== HÉROS PAGES INTERNES ====================== */
 .heros { position: relative; color: #fff; text-align: center; padding: 96px 0 104px; overflow: hidden;
   background: linear-gradient(180deg, rgba(8,40,22,0.45), rgba(8,40,22,0.75)), linear-gradient(120deg, #1d6e7a, #1c6a4a 45%, #0c3d22); }

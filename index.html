@@ -36,6 +36,21 @@
       </svg>
     </div>
     <div class="hero__veil"></div>
+
+    <!-- WIDGET MÉTÉO & HEURE -->
+    <aside class="widget-mh" id="widget-mh" aria-label="Météo et heure locale de Koula-Moutou">
+      <div class="widget-mh__heure">
+        <span class="widget-mh__h" id="mh-heure">--:--:--</span>
+        <span class="widget-mh__d" id="mh-date">Koula-Moutou</span>
+      </div>
+      <div class="widget-mh__sep"></div>
+      <div class="widget-mh__meteo" id="mh-meteo">
+        <span class="widget-mh__ico" id="mh-ico" aria-hidden="true">⛅</span>
+        <span class="widget-mh__temp" id="mh-temp">…</span>
+        <span class="widget-mh__desc" id="mh-desc">Chargement…</span>
+      </div>
+    </aside>
+
     <div class="wrap">
       <span class="tag">Portail officiel de la commune</span>
       <h1>Bienvenue à Koula-Moutou,<br>au cœur de la forêt de l'Ogooué-Lolo</h1>
@@ -193,5 +208,6 @@
 
   <script src="js/foret-ambiance.js"></script>
   <script src="js/composants.js"></script>
+  <script src="js/meteo-heure.js" defer></script>
 </body>
 </html>
