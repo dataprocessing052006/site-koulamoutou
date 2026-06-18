@@ -27,7 +27,35 @@ create table if not exists articles (
   publie boolean not null default false,
   date_pub date not null default current_date
 );
+
+-- Utilisateurs du back-office (profils : 'admin' ou 'editeur')
+create table if not exists users (
+  id uuid primary key default gen_random_uuid(),
+  created_at timestamptz not null default now(),
+  nom text not null,
+  email text unique not null,
+  role text not null default 'editeur',
+  password_hash text not null,
+  actif boolean not null default true
+);
+
+-- Statistiques de fréquentation (vues de pages)
+create table if not exists vues (
+  id bigint generated always as identity primary key,
+  created_at timestamptz not null default now(),
+  chemin text,
+  article_id text
+);
+create index if not exists vues_created_idx on vues (created_at);
 ```
+
+> Si la table `articles` existe déjà, ce script ajoute simplement `users` et `vues`
+> (les `create table if not exists` ne touchent pas à l'existant).
+
+### Profils et premier accès
+- Le **compte principal** (e-mail laissé vide + `ADMIN_PASSWORD`) reste toujours disponible et a le profil **Administrateur**.
+- Connecte-toi avec ce compte, puis crée les utilisateurs (onglet **Utilisateurs & profils**) :
+  **Administrateur** (gère tout, y compris les comptes) ou **Éditeur** (rédige et publie les articles, consulte le tableau de bord).
 
 ## 2) Créer le stockage des images (Blob)
 

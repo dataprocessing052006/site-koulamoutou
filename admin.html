@@ -4,19 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex">
-  <title>Back-office — Actualités · Mairie de Koula-Moutou</title>
+  <title>Back-office — Mairie de Koula-Moutou</title>
   <link rel="stylesheet" href="css/style.css?v=2">
   <link rel="icon" type="image/svg+xml" href="images/blason-koulamoutou.svg">
   <style>
     .adm-top { background: var(--vert-d); color: #fff; }
-    .adm-top .wrap { display: flex; align-items: center; gap: 14px; min-height: 64px; }
+    .adm-top .wrap { display: flex; align-items: center; gap: 14px; min-height: 64px; flex-wrap: wrap; }
     .adm-top img { height: 40px; }
     .adm-top b { font-family: var(--police-titre); font-size: 1.05rem; }
-    .adm-top .adm-sortir { margin-left: auto; }
-    .adm-wrap { max-width: 1080px; margin: 30px auto; padding: 0 22px; }
-    .adm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: start; }
+    .adm-top nav { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+    .adm-top nav a { color: #eaf3ed; font-weight: 600; font-size: 0.9rem; }
+    .adm-top nav a:hover { color: var(--or-l); }
+    .adm-qui { font-size: 0.8rem; color: var(--or-l); }
+    .adm-wrap { max-width: 1080px; margin: 28px auto; padding: 0 22px; }
+    .adm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; align-items: start; }
     @media (max-width: 880px) { .adm-grid { grid-template-columns: 1fr; } }
-    .adm-carte { background: #fff; border: 1px solid var(--ligne); border-radius: var(--rayon); box-shadow: var(--ombre); padding: 24px; }
+    .adm-carte { background: #fff; border: 1px solid var(--ligne); border-radius: var(--rayon); box-shadow: var(--ombre); padding: 24px; margin-bottom: 26px; }
     .adm-login { max-width: 420px; margin: 8vh auto; }
     .adm-liste__item { display: flex; gap: 12px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--ligne); }
     .adm-liste__item:last-child { border-bottom: 0; }
@@ -27,29 +30,35 @@
     .adm-statut { font-size: 0.7rem; font-weight: 800; text-transform: uppercase; padding: 3px 9px; border-radius: 20px; }
     .adm-statut.on { background: #e4f4ea; color: #15803d; }
     .adm-statut.off { background: #fde8e8; color: #b91c1c; }
+    .adm-role { font-size: 0.68rem; font-weight: 800; text-transform: uppercase; padding: 3px 9px; border-radius: 20px; background: var(--vert-pale); color: var(--vert); }
     .adm-actions { display: flex; gap: 6px; flex-wrap: wrap; }
     .adm-mini { font-size: 0.78rem; padding: 6px 10px; border-radius: 7px; border: 1px solid var(--ligne); background: #fff; cursor: pointer; }
     .adm-mini:hover { border-color: var(--vert-l); }
     .adm-msg { padding: 12px 16px; border-radius: 10px; margin-bottom: 16px; font-weight: 600; display: none; }
     .adm-msg.ok { display: block; background: #e4f4ea; color: #15803d; }
     .adm-msg.err { display: block; background: #fde8e8; color: #b91c1c; }
-    .adm-config { background: #fff7e6; border: 1px solid var(--or); color: #7a5b00; padding: 14px 18px; border-radius: 10px; margin-bottom: 20px; }
   </style>
 </head>
 <body>
   <header class="adm-top"><div class="wrap">
     <img src="images/blason-koulamoutou.svg" alt="">
-    <b>Back-office — Actualités</b>
-    <a href="index.html" class="btn btn--ligne adm-sortir" style="border-color:rgba(255,255,255,.6)">Voir le site</a>
-    <button id="btn-sortir" class="btn btn--or" style="display:none">Se déconnecter</button>
+    <b>Back-office — Koula-Moutou</b>
+    <nav>
+      <span class="adm-qui" id="adm-qui"></span>
+      <a href="dashboard.html" id="lien-dashboard" style="display:none">📊 Tableau de bord</a>
+      <a href="index.html">Voir le site</a>
+      <button id="btn-sortir" class="btn btn--or" style="display:none">Se déconnecter</button>
+    </nav>
   </div></header>
 
   <!-- CONNEXION -->
   <section id="adm-login" class="adm-wrap" style="display:none">
     <div class="adm-carte adm-login">
-      <h2 style="margin-bottom:18px">Connexion administrateur</h2>
+      <h2 style="margin-bottom:6px">Connexion</h2>
+      <p style="font-size:0.84rem;color:var(--gris);margin-bottom:16px">Saisissez vos identifiants. Pour le compte principal, laissez l'e-mail vide.</p>
       <div id="login-msg" class="adm-msg"></div>
       <form id="form-login" class="form">
+        <div class="champ"><label for="email">E-mail</label><input type="email" id="email" autocomplete="username" placeholder="(vide pour le compte principal)"></div>
         <div class="champ"><label for="mdp">Mot de passe</label><input type="password" id="mdp" required autocomplete="current-password"></div>
         <button type="submit" class="btn btn--vert" style="justify-content:center;width:100%">Se connecter</button>
       </form>
@@ -59,9 +68,10 @@
   <!-- APPLICATION -->
   <section id="adm-app" class="adm-wrap" style="display:none">
     <div id="app-msg" class="adm-msg"></div>
+
     <div class="adm-grid">
-      <!-- Éditeur -->
-      <div class="adm-carte">
+      <!-- Éditeur d'article -->
+      <div class="adm-carte" style="margin-bottom:0">
         <h2 id="editeur-titre" style="margin-bottom:18px">Nouvel article</h2>
         <form id="form-article" class="form">
           <input type="hidden" id="art-id">
@@ -91,11 +101,40 @@
         </form>
       </div>
 
-      <!-- Liste -->
-      <div class="adm-carte">
+      <!-- Liste des articles -->
+      <div class="adm-carte" style="margin-bottom:0">
         <h2 style="margin-bottom:8px">Articles</h2>
-        <p style="font-size:0.84rem;color:var(--gris);margin-bottom:14px">Basculez « Publié / Retiré » pour afficher ou retirer du site.</p>
+        <p style="font-size:0.84rem;color:var(--gris);margin-bottom:14px">« Publier / Retirer » pour afficher ou retirer du site.</p>
         <div id="adm-liste"><p style="color:var(--gris)">Chargement…</p></div>
+      </div>
+    </div>
+
+    <!-- Gestion des utilisateurs (administrateurs uniquement) -->
+    <div class="adm-carte" id="bloc-users" style="display:none;margin-top:26px">
+      <h2 style="margin-bottom:8px">Utilisateurs &amp; profils</h2>
+      <p style="font-size:0.84rem;color:var(--gris);margin-bottom:16px">Créez des comptes et attribuez un profil : <strong>Administrateur</strong> (tout) ou <strong>Éditeur</strong> (articles).</p>
+      <div class="adm-grid">
+        <form id="form-user" class="form">
+          <input type="hidden" id="u-id">
+          <div class="champ"><label for="u-nom">Nom complet *</label><input type="text" id="u-nom" required></div>
+          <div class="champ"><label for="u-email">E-mail *</label><input type="email" id="u-email" required></div>
+          <div class="form__ligne">
+            <div class="champ"><label for="u-role">Profil</label>
+              <select id="u-role"><option value="editeur">Éditeur</option><option value="admin">Administrateur</option></select>
+            </div>
+            <div class="champ"><label for="u-actif">Statut</label>
+              <select id="u-actif"><option value="1">Actif</option><option value="0">Désactivé</option></select>
+            </div>
+          </div>
+          <div class="champ"><label for="u-mdp" id="u-mdp-label">Mot de passe *</label><input type="password" id="u-mdp" autocomplete="new-password"></div>
+          <div style="display:flex;gap:10px">
+            <button type="submit" class="btn btn--vert" style="justify-content:center;flex:1">Enregistrer l'utilisateur</button>
+            <button type="button" id="u-annuler" class="btn btn--g" style="justify-content:center">Réinitialiser</button>
+          </div>
+        </form>
+        <div>
+          <div id="users-liste"><p style="color:var(--gris)">Chargement…</p></div>
+        </div>
       </div>
     </div>
   </section>

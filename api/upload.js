@@ -1,9 +1,9 @@
 const { put } = require("@vercel/blob");
-const { estAdmin } = require("../lib/auth");
+const { peutEcrireArticles } = require("../lib/auth");
 
 module.exports = async (req, res) => {
   if (req.method !== "POST") return res.status(405).json({ error: "Méthode non autorisée" });
-  if (!estAdmin(req)) return res.status(401).json({ error: "Non autorisé" });
+  if (!peutEcrireArticles(req)) return res.status(401).json({ error: "Non autorisé" });
   try {
     var b = req.body || {};
     var dataUrl = b.dataUrl;

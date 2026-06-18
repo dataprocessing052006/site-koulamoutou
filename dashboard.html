@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>Tableau de bord — Mairie de Koula-Moutou</title>
+  <link rel="stylesheet" href="css/style.css?v=2">
+  <link rel="icon" type="image/svg+xml" href="images/blason-koulamoutou.svg">
+  <style>
+    .db-top { background: var(--vert-d); color: #fff; }
+    .db-top .wrap { display: flex; align-items: center; gap: 14px; min-height: 64px; flex-wrap: wrap; }
+    .db-top img { height: 40px; }
+    .db-top b { font-family: var(--police-titre); font-size: 1.05rem; }
+    .db-top nav { margin-left: auto; display: flex; gap: 14px; align-items: center; }
+    .db-top nav a { color: #eaf3ed; font-weight: 600; font-size: 0.9rem; }
+    .db-wrap { max-width: 1140px; margin: 26px auto; padding: 0 22px; }
+    .db-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 16px; margin-bottom: 26px; }
+    .db-card { background: #fff; border: 1px solid var(--ligne); border-top: 4px solid var(--or); border-radius: var(--rayon); box-shadow: var(--ombre); padding: 18px 20px; }
+    .db-card .n { font-family: var(--police-titre); font-size: 2rem; font-weight: 700; color: var(--vert-d); line-height: 1; }
+    .db-card .l { font-size: 0.84rem; color: var(--gris); margin-top: 6px; }
+    .db-graphs { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+    @media (max-width: 820px) { .db-graphs { grid-template-columns: 1fr; } }
+    .db-panel { background: #fff; border: 1px solid var(--ligne); border-radius: var(--rayon); box-shadow: var(--ombre); padding: 20px 22px; margin-bottom: 22px; }
+    .db-panel h3 { font-size: 1.05rem; margin-bottom: 14px; }
+    .db-liste div { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--ligne); font-size: 0.9rem; }
+    .db-liste div:last-child { border-bottom: 0; }
+    .db-liste .b { color: var(--vert-d); font-weight: 700; }
+    .db-vide { max-width: 460px; margin: 12vh auto; text-align: center; }
+  </style>
+</head>
+<body>
+  <header class="db-top"><div class="wrap">
+    <img src="images/blason-koulamoutou.svg" alt="">
+    <b>Tableau de bord</b>
+    <nav>
+      <span style="font-size:0.8rem;color:var(--or-l)" id="db-qui"></span>
+      <a href="admin.html">✏️ Rédaction</a>
+      <a href="index.html">Voir le site</a>
+    </nav>
+  </div></header>
+
+  <div id="db-non" class="db-wrap" style="display:none">
+    <div class="db-panel db-vide">
+      <h3>Accès réservé</h3>
+      <p style="color:var(--gris);margin-bottom:18px">Vous devez être connecté pour consulter le tableau de bord.</p>
+      <a href="admin.html" class="btn btn--vert">Se connecter</a>
+    </div>
+  </div>
+
+  <main id="db-app" class="db-wrap" style="display:none">
+    <h1 style="font-size:1.6rem;margin-bottom:6px">Vue d'ensemble</h1>
+    <p style="color:var(--gris);margin-bottom:22px">Activité du portail de la commune de Koula-Moutou.</p>
+
+    <div class="db-cards" id="db-cards"></div>
+
+    <div class="db-graphs">
+      <div class="db-panel"><h3>Publications par mois</h3><canvas id="g-mois" height="220"></canvas></div>
+      <div class="db-panel"><h3>Articles par catégorie</h3><canvas id="g-cat" height="220"></canvas></div>
+      <div class="db-panel"><h3>Fréquentation (30 derniers jours)</h3><canvas id="g-vues" height="220"></canvas></div>
+      <div class="db-panel"><h3>Statut des articles</h3><canvas id="g-statut" height="220"></canvas></div>
+    </div>
+
+    <div class="db-graphs">
+      <div class="db-panel"><h3>Articles les plus lus</h3><div class="db-liste" id="db-top"></div></div>
+      <div class="db-panel"><h3>Derniers articles</h3><div class="db-liste" id="db-derniers"></div></div>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

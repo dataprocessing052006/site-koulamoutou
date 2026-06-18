@@ -326,6 +326,19 @@
   }
   window.initCarrousel = initCarrousel;
 
+  /* ---------------- SUIVI DES VUES (statistiques) ---------------- */
+  function suivreVue() {
+    try {
+      var aid = new URLSearchParams(location.search).get("id");
+      fetch("/api/track", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ chemin: location.pathname, articleId: aid || null }),
+        keepalive: true
+      }).catch(function () {});
+    } catch (e) { /* sans effet si l'API est absente */ }
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     construireEntete();
     construirePied();
@@ -334,5 +347,6 @@
     initCarrousel();
     animerAuDefilement();
     animerCompteurs();
+    suivreVue();
   });
 })();

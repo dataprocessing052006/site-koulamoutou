@@ -1,5 +1,5 @@
 const { q } = require("../lib/db");
-const { estAdmin } = require("../lib/auth");
+const { peutEcrireArticles } = require("../lib/auth");
 
 function aujourdhui() { return new Date().toISOString().slice(0, 10); }
 
@@ -13,7 +13,7 @@ module.exports = async (req, res) => {
         return res.json(r1.rows[0] || null);
       }
       if (all) {
-        if (!estAdmin(req)) return res.status(401).json({ error: "Non autorisé" });
+        if (!peutEcrireArticles(req)) return res.status(401).json({ error: "Non autorisé" });
         var r2 = await q("select * from articles order by date_pub desc, created_at desc");
         return res.json(r2.rows);
       }
@@ -21,7 +21,7 @@ module.exports = async (req, res) => {
       return res.json(r3.rows);
     }
 
-    if (!estAdmin(req)) return res.status(401).json({ error: "Non autorisé" });
+    if (!peutEcrireArticles(req)) return res.status(401).json({ error: "Non autorisé" });
     var a = req.body || {};
 
     if (req.method === "POST") {
