@@ -263,6 +263,9 @@ img { max-width: 100%; display: block; }
 .duo__visuel { border-radius: 16px; min-height: 330px; box-shadow: var(--ombre-forte); position: relative; overflow: hidden; }
 .duo__visuel span { position: absolute; bottom: 16px; left: 16px; right: 16px; background: rgba(8,40,22,0.82); color: #fff; padding: 10px 16px; border-radius: 8px; font-size: 0.86rem; }
 
+.signature { font-style: italic; color: var(--vert-d); border-left: 3px solid var(--or); padding-left: 16px; margin-top: 18px; }
+.signature strong { font-family: var(--police-titre); font-style: normal; font-size: 1.05rem; }
+
 .liste-coches { list-style: none; }
 .liste-coches li { padding: 9px 0 9px 32px; position: relative; }
 .liste-coches li::before { content: ""; position: absolute; left: 0; top: 13px; width: 17px; height: 17px; background: var(--vert-l);
