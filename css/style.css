@@ -354,6 +354,19 @@ img { max-width: 100%; display: block; }
 .actu__corps p { font-size: 0.92rem; flex: 1; margin-bottom: 14px; color: var(--gris); }
 .etiquette { display: inline-block; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; background: var(--vert-pale); color: var(--vert); padding: 4px 10px; border-radius: 20px; font-weight: 700; align-self: flex-start; }
 
+/* ====================== BANDEAU D'ACTUALITÉS DÉFILANT ====================== */
+.ticker { display: flex; align-items: stretch; background: var(--vert-d); color: #fff; border-bottom: 3px solid var(--or); overflow: hidden; }
+.ticker__label { flex-shrink: 0; display: flex; align-items: center; background: var(--or); color: var(--vert-d); font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.74rem; padding: 0 16px; white-space: nowrap; }
+.ticker__mask { flex: 1; overflow: hidden; }
+.ticker__track { display: flex; width: max-content; white-space: nowrap; animation: ticker 40s linear infinite; }
+.ticker:hover .ticker__track { animation-play-state: paused; }
+.ticker__track a { display: inline-flex; align-items: center; gap: 9px; color: #eaf3ed; text-decoration: none; padding: 9px 26px; font-size: 0.88rem; border-left: 1px solid rgba(255,255,255,0.14); }
+.ticker__track a:hover { color: var(--or-l); }
+.ticker__track b { color: var(--or-l); text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.05em; font-weight: 800; }
+@keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .ticker__track { animation: none; } }
+@media (max-width: 600px) { .ticker__label { font-size: 0.66rem; padding: 0 10px; } .ticker__track a { font-size: 0.82rem; padding: 8px 18px; } }
+
 /* ====================== CARROUSEL ACTUALITÉS (accueil) ====================== */
 .carrousel { position: relative; border-radius: var(--rayon); overflow: hidden; box-shadow: var(--ombre-forte); }
 .carrousel__piste { display: flex; transition: transform 0.6s cubic-bezier(.4,0,.2,1); }
