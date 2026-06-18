@@ -47,12 +47,19 @@
         '<button class="burger" id="btn-menu" aria-label="Ouvrir le menu">' +
           '<svg viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>' +
         '</button>' +
-        '<nav class="menu" id="nav-principale">' + liens +
-          '<button class="icbtn" id="btn-son" aria-pressed="false" title="Forêt">' +
-            '<svg viewBox="0 0 24 24"><path d="M3 10v4h4l5 5V5L7 10H3zm13.5 2A4.5 4.5 0 0 0 14 8v8a4.5 4.5 0 0 0 2.5-4z"/></svg>' +
-            '<span id="btn-son-texte">Forêt</span>' +
-          '</button>' +
-        '</nav>' +
+        '<nav class="menu" id="nav-principale">' + liens + '</nav>' +
+        '<div class="widget-mh" id="widget-mh" aria-label="Heure et météo de Koula-Moutou">' +
+          '<div class="widget-mh__heure">' +
+            '<span class="widget-mh__h" id="mh-heure">--:--:--</span>' +
+            '<span class="widget-mh__d" id="mh-date">Koula-Moutou</span>' +
+          '</div>' +
+          '<div class="widget-mh__sep"></div>' +
+          '<div class="widget-mh__meteo">' +
+            '<span class="widget-mh__ico" id="mh-ico" aria-hidden="true">⛅</span>' +
+            '<span class="widget-mh__temp" id="mh-temp">…</span>' +
+            '<span class="widget-mh__desc" id="mh-desc">Chargement…</span>' +
+          '</div>' +
+        '</div>' +
       '</div></header>' +
       '<div class="tricolore"><i></i><i></i><i></i></div>';
 
@@ -115,17 +122,58 @@
       });
     }
 
-    var btnSon = document.getElementById("btn-son");
-    var txt = document.getElementById("btn-son-texte");
-    if (btnSon) {
-      btnSon.addEventListener("click", function () {
-        window.ForetAmbiance.basculer();
-        var on = window.ForetAmbiance.estActif();
-        btnSon.classList.toggle("on", on);
-        btnSon.setAttribute("aria-pressed", on ? "true" : "false");
-        if (txt) txt.textContent = on ? "Forêt 🔊" : "Forêt";
-      });
+  }
+
+  /* ---------------- HEURE + MÉTÉO (widget en-tête) ---------------- */
+  function demarrerMeteoHeure() {
+    var LAT = -1.1373, LON = 12.4719, FUSEAU = "Africa/Libreville";
+    var elH = document.getElementById("mh-heure");
+    var elD = document.getElementById("mh-date");
+    if (elH) {
+      var fmtH = new Intl.DateTimeFormat("fr-FR", { timeZone: FUSEAU, hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false });
+      var fmtD = new Intl.DateTimeFormat("fr-FR", { timeZone: FUSEAU, weekday: "long", day: "numeric", month: "long" });
+      var majH = function () {
+        var n = new Date();
+        elH.textContent = fmtH.format(n);
+        if (elD) { var d = fmtD.format(n); elD.textContent = d.charAt(0).toUpperCase() + d.slice(1); }
+      };
+      majH();
+      setInterval(majH, 1000);
     }
+
+    var CODES = {
+      0: ["☀️", "Ciel dégagé"], 1: ["🌤️", "Plutôt dégagé"], 2: ["⛅", "Partiellement nuageux"],
+      3: ["☁️", "Couvert"], 45: ["🌫️", "Brouillard"], 48: ["🌫️", "Brouillard givrant"],
+      51: ["🌦️", "Bruine légère"], 53: ["🌦️", "Bruine"], 55: ["🌦️", "Bruine dense"],
+      61: ["🌧️", "Pluie faible"], 63: ["🌧️", "Pluie"], 65: ["🌧️", "Forte pluie"],
+      66: ["🌧️", "Pluie verglaçante"], 67: ["🌧️", "Pluie verglaçante"],
+      80: ["🌦️", "Averses"], 81: ["🌦️", "Averses"], 82: ["⛈️", "Fortes averses"],
+      95: ["⛈️", "Orage"], 96: ["⛈️", "Orage grêleux"], 99: ["⛈️", "Orage grêleux"]
+    };
+    var elIco = document.getElementById("mh-ico");
+    var elTemp = document.getElementById("mh-temp");
+    var elDesc = document.getElementById("mh-desc");
+    if (!elTemp) return;
+    var URL = "https://api.open-meteo.com/v1/forecast?latitude=" + LAT + "&longitude=" + LON +
+      "&current=temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m&timezone=" + encodeURIComponent(FUSEAU);
+    var charger = function () {
+      fetch(URL, { cache: "no-store" })
+        .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+        .then(function (data) {
+          var c = data && data.current; if (!c) throw new Error("vide");
+          var info = CODES[c.weather_code] || ["🌡️", "—"];
+          if (elIco) elIco.textContent = info[0];
+          elTemp.textContent = Math.round(c.temperature_2m) + "°C";
+          if (elDesc) elDesc.textContent = info[1] + " · " + Math.round(c.relative_humidity_2m) + "% · vent " + Math.round(c.wind_speed_10m) + " km/h";
+        })
+        .catch(function () {
+          if (elIco) elIco.textContent = "🌡️";
+          elTemp.textContent = "—";
+          if (elDesc) elDesc.textContent = "Météo indisponible";
+        });
+    };
+    charger();
+    setInterval(charger, 15 * 60 * 1000);
   }
 
   /* ---------------- ANIMATIONS AU DÉFILEMENT ---------------- */
@@ -172,6 +220,7 @@
     construireEntete();
     construirePied();
     brancherInteractions();
+    demarrerMeteoHeure();
     animerAuDefilement();
     animerCompteurs();
   });

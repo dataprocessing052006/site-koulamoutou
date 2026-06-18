@@ -88,8 +88,8 @@ img { max-width: 100%; display: block; }
 .brand__t b { display: block; color: var(--vert-d); font-family: var(--police-titre); font-size: 1.14rem; line-height: 1.05; }
 .brand__t span { font-size: 0.72rem; color: var(--gris); text-transform: uppercase; letter-spacing: 0.08em; }
 
-.menu { margin-left: auto; display: flex; gap: 3px; align-items: center; }
-.menu a { padding: 10px 13px; border-radius: 7px; color: var(--encre); font-weight: 600; font-size: 0.92rem; }
+.menu { margin-right: auto; display: flex; gap: 2px; align-items: center; }
+.menu a { padding: 9px 11px; border-radius: 7px; color: var(--encre); font-weight: 600; font-size: 0.9rem; }
 .menu a:hover { background: var(--vert-pale); color: var(--vert); }
 .menu a.on { color: var(--vert); }
 .menu a.on::after { content: ""; display: block; height: 3px; border-radius: 3px; background: var(--or); margin-top: 3px; }
@@ -172,21 +172,22 @@ img { max-width: 100%; display: block; }
   .hero__oiseaux { display: none; }
 }
 
-/* ====================== WIDGET MÉTÉO & HEURE ====================== */
+/* ====================== WIDGET HEURE & MÉTÉO (en-tête) ====================== */
 .widget-mh {
-  display: flex; align-items: center; justify-content: center; gap: 16px;
-  background: rgba(8,40,22,0.55); backdrop-filter: blur(10px);
-  border: 1px solid rgba(231,200,105,0.4); border-radius: 14px;
-  padding: 12px 18px; color: #fff; box-shadow: var(--ombre);
+  display: flex; align-items: center; gap: 11px; white-space: nowrap;
+  background: var(--vert-pale); border: 1px solid var(--ligne);
+  border-radius: 10px; padding: 5px 12px; color: var(--vert-d);
 }
-.widget-mh__heure { display: flex; flex-direction: column; line-height: 1.1; }
-.widget-mh__h { font-family: var(--police-titre); font-size: 1.5rem; font-weight: 700; font-variant-numeric: tabular-nums; letter-spacing: 0.02em; }
-.widget-mh__d { font-size: 0.72rem; color: var(--or-l); text-transform: capitalize; margin-top: 2px; }
-.widget-mh__sep { width: 1px; align-self: stretch; background: rgba(255,255,255,0.25); }
-.widget-mh__meteo { display: flex; flex-direction: column; line-height: 1.15; }
-.widget-mh__ico { font-size: 1.4rem; }
-.widget-mh__temp { font-family: var(--police-titre); font-size: 1.25rem; font-weight: 700; }
-.widget-mh__desc { font-size: 0.68rem; color: #d7e8de; max-width: 180px; }
+.widget-mh__heure { display: flex; flex-direction: column; line-height: 1.05; }
+.widget-mh__h { font-family: var(--police-titre); font-size: 1.02rem; font-weight: 700; font-variant-numeric: tabular-nums; color: var(--vert-d); }
+.widget-mh__d { font-size: 0.6rem; color: var(--gris); text-transform: capitalize; }
+.widget-mh__sep { width: 1px; align-self: stretch; background: var(--ligne); }
+.widget-mh__meteo { display: flex; align-items: center; gap: 6px; }
+.widget-mh__ico { font-size: 1.1rem; }
+.widget-mh__temp { font-family: var(--police-titre); font-size: 0.98rem; font-weight: 700; color: var(--vert-d); }
+.widget-mh__desc { font-size: 0.6rem; color: var(--gris); }
+@media (max-width: 1180px) { .widget-mh__desc { display: none; } }
+@media (max-width: 600px) { .widget-mh__d { display: none; } }
 
 /* Hero deux colonnes : message à gauche, météo + Maire à droite */
 @media (max-width: 900px) {
@@ -388,15 +389,16 @@ img { max-width: 100%; display: block; }
   .grille--4 { grid-template-columns: repeat(2, 1fr); }
   .stats { grid-template-columns: repeat(2, 1fr); }
   .duo { grid-template-columns: 1fr; }
-}
-@media (max-width: 768px) {
-  .burger { display: block; }
-  .menu { display: none; position: absolute; top: 82px; left: 0; right: 0; background: #fff; flex-direction: column; align-items: stretch; padding: 12px; border-bottom: 1px solid var(--ligne); box-shadow: var(--ombre); }
+  /* Menu repliable : widget à droite, burger tout à droite */
+  .burger { display: block; order: 3; margin-left: 10px; }
+  .widget-mh { order: 2; margin-left: auto; }
+  .menu { order: 4; display: none; position: absolute; top: 82px; left: 0; right: 0; background: #fff; flex-direction: column; align-items: stretch; padding: 12px; border-bottom: 1px solid var(--ligne); box-shadow: var(--ombre); margin: 0; }
   .menu.open { display: flex; }
   .menu a { padding: 13px 16px; border-radius: 10px; }
   .menu a.on::after { display: none; }
   .menu a.on { background: var(--vert-pale); }
-  .icbtn { margin-top: 6px; justify-content: center; }
+}
+@media (max-width: 768px) {
   .grille--3, .grille--2 { grid-template-columns: 1fr; }
   .form__ligne { grid-template-columns: 1fr; }
   .gouv__r { gap: 12px; }
