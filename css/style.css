@@ -194,6 +194,16 @@ img { max-width: 100%; display: block; }
   .hero__side { max-width: 420px; margin: 0 auto; width: 100%; }
 }
 
+/* Pages d'article (actualités détaillées) */
+.article { max-width: 820px; }
+.article .actu__date { margin-bottom: 14px; }
+.article__media { margin: 0 0 26px; }
+.article__media img { width: 100%; height: auto; border-radius: var(--rayon); box-shadow: var(--ombre); display: block; }
+.article__media figcaption { font-size: 0.78rem; color: var(--gris); margin-top: 8px; font-style: italic; }
+.article p { margin-bottom: 16px; }
+.article h2 { font-size: 1.4rem; margin: 28px 0 12px; }
+.article .chapeau { font-size: 1.12rem; color: var(--vert-d); font-weight: 600; }
+
 /* Section « Mot du Maire » (message complet) */
 .mot-maire { max-width: 820px; }
 .mot-maire .section-titre { text-align: left; }
