@@ -4,14 +4,16 @@ Le site est statique ; le back-office utilise des **fonctions serverless Vercel*
 une base **Vercel Postgres** (articles) et **Vercel Blob** (images). L'administration est
 protégée par un mot de passe (cookie de session signé).
 
-## 1) Créer la base de données Postgres
+## 1) Créer la base de données Postgres (Neon)
 
-Tableau de bord **Vercel → ton projet `site-koulamoutou` → onglet Storage → Create Database → Postgres**.
+Tableau de bord **Vercel → projet `site-koulamoutou` → Storage → Create Database**.
+- Dans le panneau, choisis **Neon — Serverless Postgres** (catégorie *Marketplace Database Providers*).
 - Nom : `koulamoutou-db`, région Europe.
 - **Connect to Project** : relie-la au projet (coche *Production*, *Preview*, *Development*).
-  → Vercel ajoute automatiquement les variables `POSTGRES_URL`, etc.
+  → Vercel ajoute automatiquement la chaîne de connexion (`DATABASE_URL` et/ou `POSTGRES_URL`).
+  Le site accepte les deux noms, rien d'autre à faire.
 
-Puis ouvre l'onglet **Query** (ou *Data → SQL*) de la base et exécute :
+Puis ouvre la base dans Neon (**Open in Neon → SQL Editor**, ou l'onglet *Query*) et exécute :
 
 ```sql
 create table if not exists articles (
@@ -29,7 +31,8 @@ create table if not exists articles (
 
 ## 2) Créer le stockage des images (Blob)
 
-**Storage → Create Database → Blob** → nom `actus`, **Connect to Project**.
+**Storage → Create Database → Blob** (option *Blob — Fast object storage*, première de la liste)
+→ nom `actus`, **Connect to Project**.
 → Vercel ajoute automatiquement la variable `BLOB_READ_WRITE_TOKEN`.
 
 ## 3) Définir le mot de passe admin et la clé de session

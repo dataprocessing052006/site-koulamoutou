@@ -4,7 +4,7 @@
   "private": true,
   "description": "Site institutionnel de Koula-Moutou — fonctions API (Vercel Postgres + Blob)",
   "dependencies": {
-    "@vercel/postgres": "^0.10.0",
+    "pg": "^8.13.1",
     "@vercel/blob": "^2.4.1"
   }
 }
