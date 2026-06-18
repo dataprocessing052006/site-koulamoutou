@@ -131,8 +131,19 @@ img { max-width: 100%; display: block; }
 
 /* ====================== VOLÉE D'OISEAUX ====================== */
 .hero__oiseaux { position: absolute; inset: 0; z-index: 2; overflow: hidden; pointer-events: none; }
-.oiseau { position: absolute; left: -6%; will-change: transform; animation: vol linear infinite; }
-.oiseau svg { width: 100%; height: auto; display: block; transform-origin: 50% 60%; animation: battre 0.5s ease-in-out infinite; }
+.oiseau {
+  position: absolute; left: -6%;
+  top: var(--t, 16%); width: var(--w, 26px);
+  will-change: transform;
+  animation: vol linear infinite;
+  animation-duration: var(--d, 28s);
+  animation-delay: var(--dl, 0s);
+}
+.oiseau svg {
+  width: 100%; height: auto; display: block; transform-origin: 50% 60%;
+  animation: battre ease-in-out infinite;
+  animation-duration: var(--f, 0.5s);
+}
 .oiseau svg path { fill: none; stroke: #082a18; stroke-width: 2.4; stroke-linecap: round; opacity: 0.7; }
 
 @keyframes vol {
@@ -143,17 +154,6 @@ img { max-width: 100%; display: block; }
   0%, 100% { transform: scaleY(1); }
   50%      { transform: scaleY(0.45); }
 }
-
-/* Positions, tailles, vitesses et décalages variés (effet de volée) */
-.oiseau.o1 { top: 16%; width: 34px; animation-duration: 26s; animation-delay: 0s;    }
-.oiseau.o2 { top: 20%; width: 26px; animation-duration: 30s; animation-delay: 1.4s;  }
-.oiseau.o3 { top: 13%; width: 22px; animation-duration: 33s; animation-delay: 2.2s;  }
-.oiseau.o4 { top: 26%; width: 30px; animation-duration: 28s; animation-delay: 6s;    }
-.oiseau.o5 { top: 30%; width: 20px; animation-duration: 35s; animation-delay: 9s;    }
-.oiseau.o6 { top: 10%; width: 28px; animation-duration: 31s; animation-delay: 13s;   }
-.oiseau.o7 { top: 22%; width: 24px; animation-duration: 29s; animation-delay: 17s;   }
-.oiseau.o2 svg, .oiseau.o5 svg { animation-duration: 0.42s; }
-.oiseau.o3 svg, .oiseau.o6 svg { animation-duration: 0.58s; }
 
 @media (prefers-reduced-motion: reduce) {
   .oiseau, .oiseau svg { animation: none; }
