@@ -187,43 +187,65 @@
     </div>
   </section>
 
-  <!-- ACTUALITÉS -->
+  <!-- ACTUALITÉS — CARROUSEL ANIMÉ -->
   <section class="section">
     <div class="conteneur">
-      <h2 class="section-titre">Actualités de la ville</h2>
-      <p class="section-intro">Restez informés de la vie locale et des projets de votre commune.</p>
-      <div class="grille grille--3">
-        <article class="actu revele">
-          <div class="actu__visuel v-terre"></div>
-          <div class="actu__corps">
-            <span class="etiquette">Voirie</span>
-            <div class="actu__date" style="margin-top:10px">15 mai 2026</div>
-            <h3>Réhabilitation des voies du centre-ville</h3>
-            <p>Le programme de réfection des principales artères de Koula-Moutou est lancé pour améliorer la circulation.</p>
-            <a href="actualites.html" class="carte__lien">Lire la suite</a>
-          </div>
-        </article>
-        <article class="actu revele">
-          <div class="actu__visuel v-photo" style="background-image:url('images/foret-gabon-1.jpg')"></div>
-          <div class="actu__corps">
-            <span class="etiquette">Environnement</span>
-            <div class="actu__date" style="margin-top:10px">28 avril 2026</div>
-            <h3>Journée de reboisement sur les berges</h3>
-            <p>Habitants et associations se mobilisent pour protéger les rives de la Bouenguidi.</p>
-            <a href="actualites.html" class="carte__lien">Lire la suite</a>
-          </div>
-        </article>
-        <article class="actu revele">
-          <div class="actu__visuel v-photo" style="background-image:url('images/case-bwiti.jpg')"></div>
-          <div class="actu__corps">
-            <span class="etiquette">Culture</span>
-            <div class="actu__date" style="margin-top:10px">10 avril 2026</div>
-            <h3>Festival des cultures de l'Ogooué-Lolo</h3>
-            <p>Musique, danses traditionnelles et gastronomie locale ont animé la ville tout un week-end.</p>
-            <a href="actualites.html" class="carte__lien">Lire la suite</a>
-          </div>
-        </article>
+      <h2 class="section-titre">À la une de Koula-Moutou</h2>
+      <p class="section-intro">Les dernières actualités de votre commune, en images.</p>
+
+      <div class="carrousel" id="carrousel-actus" aria-roledescription="carrousel" aria-label="Dernières actualités">
+        <div class="carrousel__piste">
+          <a class="carrousel__slide" href="actu-voirie.html" style="background-image:url('images/koulamoutou-ville.jpg')">
+            <span class="carrousel__voile"></span>
+            <span class="carrousel__txt">
+              <span class="etiquette">Voirie · 15 mai 2026</span>
+              <span class="carrousel__titre">Réhabilitation des voies du centre-ville</span>
+              <span class="carrousel__desc">Un vaste programme de réfection des principales artères pour améliorer la circulation et sécuriser les piétons.</span>
+              <span class="carrousel__lien">Lire la suite →</span>
+            </span>
+          </a>
+          <a class="carrousel__slide" href="actu-reboisement.html" style="background-image:url('images/foret-gabon-1.jpg')">
+            <span class="carrousel__voile"></span>
+            <span class="carrousel__txt">
+              <span class="etiquette">Environnement · 28 avril 2026</span>
+              <span class="carrousel__titre">Journée de reboisement sur les berges</span>
+              <span class="carrousel__desc">Plus de 300 habitants et associations mobilisés pour protéger les rives de la Bouenguidi.</span>
+              <span class="carrousel__lien">Lire la suite →</span>
+            </span>
+          </a>
+          <a class="carrousel__slide" href="actu-festival.html" style="background-image:url('images/case-bwiti.jpg')">
+            <span class="carrousel__voile"></span>
+            <span class="carrousel__txt">
+              <span class="etiquette">Culture · 10 avril 2026</span>
+              <span class="carrousel__titre">Festival des cultures de l'Ogooué-Lolo</span>
+              <span class="carrousel__desc">Danses, musique et gastronomie ont rassemblé plus de 2 000 visiteurs autour du patrimoine de la province.</span>
+              <span class="carrousel__lien">Lire la suite →</span>
+            </span>
+          </a>
+          <a class="carrousel__slide" href="actu-marche.html" style="background-image:url('images/marche-poisson.jpg')">
+            <span class="carrousel__voile"></span>
+            <span class="carrousel__txt">
+              <span class="etiquette">Économie · 19 février 2026</span>
+              <span class="carrousel__titre">Rénovation du marché central</span>
+              <span class="carrousel__desc">Toiture, sol, assainissement et zone froide : les étals du marché central font peau neuve.</span>
+              <span class="carrousel__lien">Lire la suite →</span>
+            </span>
+          </a>
+          <a class="carrousel__slide" href="actu-ecoles.html" style="background-image:url('images/actu-ecoles.jpg')">
+            <span class="carrousel__voile"></span>
+            <span class="carrousel__txt">
+              <span class="etiquette">Éducation · 8 mars 2026</span>
+              <span class="carrousel__titre">Remise de fournitures scolaires</span>
+              <span class="carrousel__desc">Près de 1 200 kits pédagogiques distribués dans 8 écoles pour soutenir la réussite des élèves.</span>
+              <span class="carrousel__lien">Lire la suite →</span>
+            </span>
+          </a>
+        </div>
+        <button class="carrousel__fleche carrousel__prec" type="button" aria-label="Actualité précédente">‹</button>
+        <button class="carrousel__fleche carrousel__suiv" type="button" aria-label="Actualité suivante">›</button>
+        <div class="carrousel__points" aria-hidden="true"></div>
       </div>
+
       <div class="texte-centre mt-40"><a href="actualites.html" class="btn btn--vert">Toutes les actualités</a></div>
     </div>
   </section>

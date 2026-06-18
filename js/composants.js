@@ -297,11 +297,55 @@
     compteurs.forEach(function (c) { obs.observe(c); });
   }
 
+  /* ---------------- CARROUSEL ACTUALITÉS ---------------- */
+  function initCarrousel() {
+    var car = document.getElementById("carrousel-actus");
+    if (!car) return;
+    var piste = car.querySelector(".carrousel__piste");
+    var slides = car.querySelectorAll(".carrousel__slide");
+    var pts = car.querySelector(".carrousel__points");
+    var n = slides.length; if (!n) return;
+    var i = 0, timer = null, dots = [];
+
+    for (var k = 0; k < n; k++) {
+      (function (k) {
+        var b = document.createElement("button");
+        b.type = "button";
+        b.setAttribute("aria-label", "Aller à l'actualité " + (k + 1));
+        b.addEventListener("click", function () { aller(k); relancer(); });
+        pts.appendChild(b);
+        dots.push(b);
+      })(k);
+    }
+
+    function maj() {
+      piste.style.transform = "translateX(-" + (i * 100) + "%)";
+      dots.forEach(function (d, idx) { d.classList.toggle("actif", idx === i); });
+    }
+    function aller(k) { i = (k + n) % n; maj(); }
+    function suiv() { aller(i + 1); }
+    function prec() { aller(i - 1); }
+    function lancer() { if (!timer) timer = setInterval(suiv, 5000); }
+    function arreter() { if (timer) { clearInterval(timer); timer = null; } }
+    function relancer() { arreter(); lancer(); }
+
+    var bs = car.querySelector(".carrousel__suiv"); if (bs) bs.addEventListener("click", function () { suiv(); relancer(); });
+    var bp = car.querySelector(".carrousel__prec"); if (bp) bp.addEventListener("click", function () { prec(); relancer(); });
+    car.addEventListener("mouseenter", arreter);
+    car.addEventListener("mouseleave", lancer);
+    car.addEventListener("focusin", arreter);
+    car.addEventListener("focusout", lancer);
+
+    maj();
+    lancer();
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     construireEntete();
     construirePied();
     brancherInteractions();
     demarrerMeteoHeure();
+    initCarrousel();
     animerAuDefilement();
     animerCompteurs();
   });
