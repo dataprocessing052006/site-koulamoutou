@@ -115,7 +115,19 @@ img { max-width: 100%; display: block; }
 .hero__bg { position: absolute; inset: 0; z-index: 0; }
 .hero__bg svg { width: 100%; height: 100%; }
 .hero__veil { position: absolute; inset: 0; z-index: 1; background: linear-gradient(100deg, rgba(8,40,22,0.80) 0%, rgba(8,40,22,0.55) 45%, rgba(8,40,22,0.25) 100%); }
-.hero .wrap { position: relative; z-index: 2; max-width: 760px; }
+.hero .wrap { position: relative; z-index: 2; max-width: var(--largeur-max); }
+.hero__grid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 0.92fr); gap: 46px; align-items: center; }
+.hero__txt { min-width: 0; }
+.hero__side { display: flex; flex-direction: column; gap: 16px; }
+
+/* Carte du Maire dans le hero */
+.hero__maire { margin: 0; display: flex; flex-direction: column; border-radius: 16px; overflow: hidden; box-shadow: var(--ombre-forte); border: 1px solid rgba(231,200,105,0.45); background: rgba(255,255,255,0.08); backdrop-filter: blur(8px); }
+.hero__maire img { width: 100%; height: auto; display: block; background: linear-gradient(165deg, var(--vert-l) 0%, var(--vert) 55%, var(--vert-d) 100%); }
+.hero__maire__cap { padding: 12px 16px 0; text-align: center; color: #fff; font-family: var(--police-titre); font-size: 1.12rem; font-weight: 700; }
+.hero__maire__cap small { display: block; font-family: var(--police-texte); font-weight: 400; font-size: 0.72rem; color: var(--or-l); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 3px; }
+.hero__maire__mot { padding: 10px 18px 0; text-align: center; font-style: italic; font-size: 0.88rem; color: #eaf3ed; }
+.hero__maire__lien { display: block; padding: 12px 18px 16px; text-align: center; color: var(--or-l); font-weight: 700; font-size: 0.85rem; }
+.hero__maire__lien:hover { color: #fff; }
 .hero .tag, .heros__sur-titre { display: inline-block; background: rgba(0,0,0,0.28); border: 1px solid rgba(231,200,105,0.5); color: var(--or-l); font-weight: 700; font-size: 0.76rem; letter-spacing: 0.16em; text-transform: uppercase; padding: 7px 16px; border-radius: 30px; margin-bottom: 20px; }
 .hero h1 { color: #fff; font-size: clamp(2.1rem, 4.6vw, 3.4rem); margin-bottom: 16px; text-shadow: 0 3px 18px rgba(0,0,0,0.4); }
 .hero p { font-size: 1.14rem; color: #e8f1ea; max-width: 600px; margin-bottom: 28px; }
@@ -162,12 +174,10 @@ img { max-width: 100%; display: block; }
 
 /* ====================== WIDGET MÉTÉO & HEURE ====================== */
 .widget-mh {
-  position: absolute; top: 22px; right: 22px; z-index: 3;
-  display: flex; align-items: center; gap: 16px;
+  display: flex; align-items: center; justify-content: center; gap: 16px;
   background: rgba(8,40,22,0.55); backdrop-filter: blur(10px);
   border: 1px solid rgba(231,200,105,0.4); border-radius: 14px;
   padding: 12px 18px; color: #fff; box-shadow: var(--ombre);
-  max-width: calc(100% - 44px);
 }
 .widget-mh__heure { display: flex; flex-direction: column; line-height: 1.1; }
 .widget-mh__h { font-family: var(--police-titre); font-size: 1.5rem; font-weight: 700; font-variant-numeric: tabular-nums; letter-spacing: 0.02em; }
@@ -177,9 +187,17 @@ img { max-width: 100%; display: block; }
 .widget-mh__ico { font-size: 1.4rem; }
 .widget-mh__temp { font-family: var(--police-titre); font-size: 1.25rem; font-weight: 700; }
 .widget-mh__desc { font-size: 0.68rem; color: #d7e8de; max-width: 180px; }
-@media (max-width: 768px) {
-  .widget-mh { position: relative; top: auto; right: auto; margin: 0 22px 18px; justify-content: center; max-width: none; }
+
+/* Hero deux colonnes : message à gauche, météo + Maire à droite */
+@media (max-width: 900px) {
+  .hero__grid { grid-template-columns: 1fr; gap: 30px; }
+  .hero__side { max-width: 420px; margin: 0 auto; width: 100%; }
 }
+
+/* Section « Mot du Maire » (message complet) */
+.mot-maire { max-width: 820px; }
+.mot-maire .section-titre { text-align: left; }
+.mot-maire .section-titre::after { margin-left: 0; }
 
 /* ====================== HÉROS PAGES INTERNES ====================== */
 .heros { position: relative; color: #fff; text-align: center; padding: 96px 0 104px; overflow: hidden;

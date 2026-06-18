@@ -66,34 +66,53 @@
 
     <div class="hero__veil"></div>
 
-    <!-- WIDGET MÉTÉO & HEURE -->
-    <aside class="widget-mh" id="widget-mh" aria-label="Météo et heure locale de Koula-Moutou">
-      <div class="widget-mh__heure">
-        <span class="widget-mh__h" id="mh-heure">--:--:--</span>
-        <span class="widget-mh__d" id="mh-date">Koula-Moutou</span>
+    <div class="wrap hero__grid">
+      <div class="hero__txt">
+        <span class="tag">Portail officiel de la commune</span>
+        <h1>Bienvenue à Koula-Moutou,<br>au cœur de la forêt de l'Ogooué-Lolo</h1>
+        <p>Effectuez vos démarches en quelques clics, suivez la vie locale et découvrez une ville chaleureuse au bord de la Bouenguidi.</p>
+        <form class="search" onsubmit="event.preventDefault();alert('Recherche de démarche : '+(this.q.value||'—'));">
+          <input name="q" type="text" placeholder="Rechercher une démarche (ex. acte de naissance)…" aria-label="Rechercher une démarche">
+          <button type="submit"><svg viewBox="0 0 24 24"><path d="M21 20l-5.6-5.6a7 7 0 1 0-1.4 1.4L20 21zM5 10.5A5.5 5.5 0 1 1 10.5 16 5.5 5.5 0 0 1 5 10.5z"/></svg>Rechercher</button>
+        </form>
+        <div class="chips">
+          <a href="administration.html">Acte de naissance</a>
+          <a href="administration.html">Mariage civil</a>
+          <a href="administration.html">Permis de construire</a>
+          <a href="tourisme.html">Découvrir la ville</a>
+        </div>
       </div>
-      <div class="widget-mh__sep"></div>
-      <div class="widget-mh__meteo" id="mh-meteo">
-        <span class="widget-mh__ico" id="mh-ico" aria-hidden="true">⛅</span>
-        <span class="widget-mh__temp" id="mh-temp">…</span>
-        <span class="widget-mh__desc" id="mh-desc">Chargement…</span>
-      </div>
-    </aside>
 
-    <div class="wrap">
-      <span class="tag">Portail officiel de la commune</span>
-      <h1>Bienvenue à Koula-Moutou,<br>au cœur de la forêt de l'Ogooué-Lolo</h1>
-      <p>Effectuez vos démarches en quelques clics, suivez la vie locale et découvrez une ville chaleureuse au bord de la Bouenguidi.</p>
-      <form class="search" onsubmit="event.preventDefault();alert('Recherche de démarche : '+(this.q.value||'—'));">
-        <input name="q" type="text" placeholder="Rechercher une démarche (ex. acte de naissance)…" aria-label="Rechercher une démarche">
-        <button type="submit"><svg viewBox="0 0 24 24"><path d="M21 20l-5.6-5.6a7 7 0 1 0-1.4 1.4L20 21zM5 10.5A5.5 5.5 0 1 1 10.5 16 5.5 5.5 0 0 1 5 10.5z"/></svg>Rechercher</button>
-      </form>
-      <div class="chips">
-        <a href="administration.html">Acte de naissance</a>
-        <a href="administration.html">Mariage civil</a>
-        <a href="administration.html">Permis de construire</a>
-        <a href="tourisme.html">Découvrir la ville</a>
-      </div>
+      <aside class="hero__side">
+        <!-- WIDGET MÉTÉO & HEURE -->
+        <div class="widget-mh" id="widget-mh" aria-label="Météo et heure locale de Koula-Moutou">
+          <div class="widget-mh__heure">
+            <span class="widget-mh__h" id="mh-heure">--:--:--</span>
+            <span class="widget-mh__d" id="mh-date">Koula-Moutou</span>
+          </div>
+          <div class="widget-mh__sep"></div>
+          <div class="widget-mh__meteo" id="mh-meteo">
+            <span class="widget-mh__ico" id="mh-ico" aria-hidden="true">⛅</span>
+            <span class="widget-mh__temp" id="mh-temp">…</span>
+            <span class="widget-mh__desc" id="mh-desc">Chargement…</span>
+          </div>
+        </div>
+
+        <!-- CARTE DU MAIRE -->
+        <figure class="hero__maire">
+          <picture>
+            <source srcset="images/maire.webp" type="image/webp">
+            <img src="images/maire.png" width="600" height="600"
+                 alt="Portrait de Victor Ngouassanga, Maire de la commune de Koula-Moutou">
+          </picture>
+          <figcaption class="hero__maire__cap">
+            <strong>Victor NGOUASSANGA</strong>
+            <small>Maire de la commune</small>
+          </figcaption>
+          <p class="hero__maire__mot">« Bienvenue à Koula-Moutou, terre d'histoire, d'hospitalité et d'avenir. »</p>
+          <a href="#mot-maire" class="hero__maire__lien">Lire le mot du Maire →</a>
+        </figure>
+      </aside>
     </div>
   </section>
 
@@ -109,26 +128,20 @@
     </div>
   </section>
 
-  <!-- MOT DU MAIRE -->
-  <section class="section section--alt">
-    <div class="conteneur duo">
-      <div class="duo__texte revele">
+  <!-- MOT DU MAIRE (message complet) -->
+  <section class="section section--alt" id="mot-maire">
+    <div class="conteneur mot-maire">
+      <div class="revele">
         <span class="kicker">Mot de bienvenue</span>
-        <h2>Le mot du Maire</h2>
+        <h2 class="section-titre">Le mot du Maire</h2>
         <p>« Chers visiteurs, c'est avec un immense plaisir que je vous souhaite la bienvenue sur le portail officiel de la Commune de Koula-Moutou, capitale de la province de l'Ogooué-Lolo.</p>
         <p>Koula-Moutou est une ville d'histoire, de traditions et de valeurs. Elle est également une ville tournée vers l'avenir, engagée dans une dynamique de modernisation, de développement durable et d'amélioration continue de la qualité de vie de ses habitants.</p>
-        <p>Notre volonté est de bâtir une administration municipale moderne, transparente, accessible et efficace, au service de tous. Bienvenue à Koula-Moutou, terre d'histoire, d'hospitalité et d'avenir. »</p>
+        <p>Ce portail a été conçu pour vous permettre d'accéder facilement aux informations utiles concernant la commune, ses services, ses projets, son actualité, son patrimoine culturel, son potentiel économique et les nombreuses opportunités qu'elle offre.</p>
+        <p>Notre volonté est de bâtir une administration municipale moderne, transparente, accessible et efficace, au service de tous. Je vous invite à parcourir cet espace, à découvrir les richesses de Koula-Moutou et à participer, chacun à son niveau, à la construction d'une ville toujours plus dynamique, attractive et prospère.</p>
+        <p>Bienvenue à Koula-Moutou, terre d'histoire, d'hospitalité et d'avenir. »</p>
         <p class="signature"><strong>Victor NGOUASSANGA</strong><br>Maire de la Commune de Koula-Moutou</p>
         <a href="presentation.html" class="btn btn--vert mt-40">Découvrir la commune</a>
       </div>
-      <figure class="maire-portrait revele">
-        <picture>
-          <source srcset="images/maire.webp" type="image/webp">
-          <img src="images/maire.png" width="600" height="600" loading="lazy"
-               alt="Portrait de Victor Ngouassanga, Maire de la commune de Koula-Moutou">
-        </picture>
-        <figcaption class="maire-portrait__nom">Victor NGOUASSANGA<small>Maire de la commune de Koula-Moutou</small></figcaption>
-      </figure>
     </div>
   </section>
 
