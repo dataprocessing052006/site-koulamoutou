@@ -122,7 +122,7 @@ img { max-width: 100%; display: block; }
 
 /* Carte du Maire dans le hero */
 .hero__maire { margin: 0; display: flex; flex-direction: column; }
-.hero__maire img { width: 100%; height: auto; display: block; border-radius: 14px; box-shadow: 0 14px 30px rgba(0,0,0,0.32); border: 1px solid rgba(231,200,105,0.35); }
+.hero__maire img { width: 100%; height: auto; display: block; filter: drop-shadow(0 14px 26px rgba(0,0,0,0.34)); }
 .hero__maire__cap { padding: 12px 16px 0; text-align: center; color: #fff; font-family: var(--police-titre); font-size: 1.12rem; font-weight: 700; }
 .hero__maire__cap small { display: block; font-family: var(--police-texte); font-weight: 400; font-size: 0.72rem; color: var(--or-l); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 3px; }
 .hero__maire__mot { padding: 10px 18px 0; text-align: center; font-style: italic; font-size: 0.88rem; color: #eaf3ed; }
