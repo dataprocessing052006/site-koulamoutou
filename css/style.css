@@ -89,7 +89,7 @@ img { max-width: 100%; display: block; }
 .brand__t span { font-size: 0.72rem; color: var(--gris); text-transform: uppercase; letter-spacing: 0.08em; }
 
 .menu { margin-right: auto; display: flex; gap: 2px; align-items: center; }
-.menu a { padding: 9px 11px; border-radius: 7px; color: var(--encre); font-weight: 600; font-size: 0.9rem; }
+.menu a { padding: 9px 11px; border-radius: 7px; color: var(--encre); font-weight: 600; font-size: 0.9rem; white-space: nowrap; }
 .menu a:hover { background: var(--vert-pale); color: var(--vert); }
 .menu a.on { color: var(--vert); }
 .menu a.on::after { content: ""; display: block; height: 3px; border-radius: 3px; background: var(--or); margin-top: 3px; }
