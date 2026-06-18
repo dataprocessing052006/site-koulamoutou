@@ -12,7 +12,8 @@ module.exports = async (req, res) => {
         var r1 = await q("select * from articles where id = $1 and publie = true limit 1", [id]);
         return res.json(r1.rows[0] || null);
       }
-      if (all && estAdmin(req)) {
+      if (all) {
+        if (!estAdmin(req)) return res.status(401).json({ error: "Non autorisé" });
         var r2 = await q("select * from articles order by date_pub desc, created_at desc");
         return res.json(r2.rows);
       }

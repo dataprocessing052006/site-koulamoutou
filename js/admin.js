@@ -8,6 +8,7 @@
   function message(el, texte, type) { el.textContent = texte; el.className = "adm-msg " + (type || ""); }
   function api(url, opts) {
     opts = opts || {};
+    opts.credentials = "same-origin";
     opts.headers = Object.assign({ "Content-Type": "application/json" }, opts.headers || {});
     return fetch(url, opts);
   }
