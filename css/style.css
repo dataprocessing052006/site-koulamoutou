@@ -111,18 +111,18 @@ img { max-width: 100%; display: block; }
 .tricolore i:nth-child(3) { background: var(--bleu-l); }
 
 /* ====================== HÉROS IMMERSIF (accueil) ====================== */
-.hero { position: relative; overflow: hidden; color: #fff; padding: 96px 0 108px; }
+.hero { position: relative; overflow: hidden; color: #fff; padding: 40px 0 64px; }
 .hero__bg { position: absolute; inset: 0; z-index: 0; }
 .hero__bg svg { width: 100%; height: 100%; }
 .hero__veil { position: absolute; inset: 0; z-index: 1; background: linear-gradient(100deg, rgba(8,40,22,0.80) 0%, rgba(8,40,22,0.55) 45%, rgba(8,40,22,0.25) 100%); }
 .hero .wrap { position: relative; z-index: 2; max-width: var(--largeur-max); }
-.hero__grid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 0.92fr); gap: 46px; align-items: center; }
+.hero__grid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 0.92fr); gap: 46px; align-items: start; }
 .hero__txt { min-width: 0; }
 .hero__side { display: flex; flex-direction: column; gap: 16px; }
 
 /* Carte du Maire dans le hero */
-.hero__maire { margin: 0; display: flex; flex-direction: column; border-radius: 16px; overflow: hidden; box-shadow: var(--ombre-forte); border: 1px solid rgba(231,200,105,0.45); background: rgba(255,255,255,0.08); backdrop-filter: blur(8px); }
-.hero__maire img { width: 100%; height: auto; display: block; background: linear-gradient(165deg, var(--vert-l) 0%, var(--vert) 55%, var(--vert-d) 100%); }
+.hero__maire { margin: 0; display: flex; flex-direction: column; }
+.hero__maire img { width: 100%; height: auto; display: block; filter: drop-shadow(0 12px 24px rgba(0,0,0,0.35)); }
 .hero__maire__cap { padding: 12px 16px 0; text-align: center; color: #fff; font-family: var(--police-titre); font-size: 1.12rem; font-weight: 700; }
 .hero__maire__cap small { display: block; font-family: var(--police-texte); font-weight: 400; font-size: 0.72rem; color: var(--or-l); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 3px; }
 .hero__maire__mot { padding: 10px 18px 0; text-align: center; font-style: italic; font-size: 0.88rem; color: #eaf3ed; }
