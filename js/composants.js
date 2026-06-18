@@ -277,48 +277,54 @@
     compteurs.forEach(function (c) { obs.observe(c); });
   }
 
-  /* ---------------- CARROUSEL ACTUALITÉS ---------------- */
+  /* ---------------- CARROUSEL ACTUALITÉS (ré-initialisable) ---------------- */
   function initCarrousel() {
     var car = document.getElementById("carrousel-actus");
     if (!car) return;
     var piste = car.querySelector(".carrousel__piste");
-    var slides = car.querySelectorAll(".carrousel__slide");
     var pts = car.querySelector(".carrousel__points");
-    var n = slides.length; if (!n) return;
-    var i = 0, timer = null, dots = [];
+    function slides() { return car.querySelectorAll(".carrousel__slide"); }
+    if (!slides().length) return;
 
-    for (var k = 0; k < n; k++) {
-      (function (k) {
-        var b = document.createElement("button");
-        b.type = "button";
-        b.setAttribute("aria-label", "Aller à l'actualité " + (k + 1));
-        b.addEventListener("click", function () { aller(k); relancer(); });
-        pts.appendChild(b);
-        dots.push(b);
-      })(k);
-    }
+    var st = car._car || (car._car = { i: 0, timer: null });
 
     function maj() {
-      piste.style.transform = "translateX(-" + (i * 100) + "%)";
-      dots.forEach(function (d, idx) { d.classList.toggle("actif", idx === i); });
+      var n = slides().length; if (st.i >= n) st.i = 0;
+      piste.style.transform = "translateX(-" + (st.i * 100) + "%)";
+      [].forEach.call(pts.children, function (d, idx) { d.classList.toggle("actif", idx === st.i); });
     }
-    function aller(k) { i = (k + n) % n; maj(); }
-    function suiv() { aller(i + 1); }
-    function prec() { aller(i - 1); }
-    function lancer() { if (!timer) timer = setInterval(suiv, 5000); }
-    function arreter() { if (timer) { clearInterval(timer); timer = null; } }
-    function relancer() { arreter(); lancer(); }
+    function aller(k) { var n = slides().length; st.i = (k + n) % n; maj(); }
+    function suiv() { aller(st.i + 1); }
+    function prec() { aller(st.i - 1); }
+    function arreter() { if (st.timer) { clearInterval(st.timer); st.timer = null; } }
+    function lancer() { arreter(); st.timer = setInterval(suiv, 5000); }
+    car._ctl = { suiv: suiv, prec: prec, lancer: lancer, arreter: arreter };
 
-    var bs = car.querySelector(".carrousel__suiv"); if (bs) bs.addEventListener("click", function () { suiv(); relancer(); });
-    var bp = car.querySelector(".carrousel__prec"); if (bp) bp.addEventListener("click", function () { prec(); relancer(); });
-    car.addEventListener("mouseenter", arreter);
-    car.addEventListener("mouseleave", lancer);
-    car.addEventListener("focusin", arreter);
-    car.addEventListener("focusout", lancer);
+    // (re)construire les points
+    pts.innerHTML = "";
+    [].forEach.call(slides(), function (_, k) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.setAttribute("aria-label", "Aller à l'actualité " + (k + 1));
+      b.addEventListener("click", function () { aller(k); lancer(); });
+      pts.appendChild(b);
+    });
+
+    // attacher les contrôles une seule fois (lisent toujours car._ctl à jour)
+    if (!car._wired) {
+      car._wired = true;
+      var bs = car.querySelector(".carrousel__suiv"); if (bs) bs.addEventListener("click", function () { car._ctl.suiv(); car._ctl.lancer(); });
+      var bp = car.querySelector(".carrousel__prec"); if (bp) bp.addEventListener("click", function () { car._ctl.prec(); car._ctl.lancer(); });
+      car.addEventListener("mouseenter", function () { car._ctl.arreter(); });
+      car.addEventListener("mouseleave", function () { car._ctl.lancer(); });
+      car.addEventListener("focusin", function () { car._ctl.arreter(); });
+      car.addEventListener("focusout", function () { car._ctl.lancer(); });
+    }
 
     maj();
     lancer();
   }
+  window.initCarrousel = initCarrousel;
 
   document.addEventListener("DOMContentLoaded", function () {
     construireEntete();
