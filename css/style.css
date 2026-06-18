@@ -82,10 +82,10 @@ img { max-width: 100%; display: block; }
 /* ====================== EN-TÊTE ====================== */
 .top { background: rgba(255,255,255,0.97); backdrop-filter: blur(8px); border-bottom: 1px solid var(--ligne); position: sticky; top: 0; z-index: 1000; }
 .top .wrap { display: flex; align-items: center; gap: 20px; min-height: 82px; }
-.brand { display: flex; align-items: center; gap: 14px; }
+.brand { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
 .brand:hover { color: inherit; }
 .brand img, .blason-img { height: 58px; width: auto; display: block; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.18)); }
-.brand__t b { display: block; color: var(--vert-d); font-family: var(--police-titre); font-size: 1.14rem; line-height: 1.05; }
+.brand__t b { display: block; color: var(--vert-d); font-family: var(--police-titre); font-size: 1.14rem; line-height: 1.05; white-space: nowrap; }
 .brand__t span { font-size: 0.72rem; color: var(--gris); text-transform: uppercase; letter-spacing: 0.08em; }
 
 .menu { margin-right: auto; display: flex; gap: 2px; align-items: center; }
@@ -185,8 +185,7 @@ img { max-width: 100%; display: block; }
 .widget-mh__meteo { display: flex; align-items: center; gap: 6px; }
 .widget-mh__ico { font-size: 1.1rem; }
 .widget-mh__temp { font-family: var(--police-titre); font-size: 0.98rem; font-weight: 700; color: var(--vert-d); }
-.widget-mh__desc { font-size: 0.6rem; color: var(--gris); }
-@media (max-width: 1180px) { .widget-mh__desc { display: none; } }
+.widget-mh__desc { display: none; }
 @media (max-width: 600px) { .widget-mh__d { display: none; } }
 
 /* Hero deux colonnes : message à gauche, météo + Maire à droite */
@@ -384,12 +383,8 @@ img { max-width: 100%; display: block; }
 .revele.vu { opacity: 1; transform: none; }
 
 /* ====================== RESPONSIVE ====================== */
-@media (max-width: 980px) {
-  .foot__grid { grid-template-columns: 1fr 1fr; }
-  .grille--4 { grid-template-columns: repeat(2, 1fr); }
-  .stats { grid-template-columns: repeat(2, 1fr); }
-  .duo { grid-template-columns: 1fr; }
-  /* Menu repliable : widget à droite, burger tout à droite */
+/* Menu repliable : widget à droite, burger tout à droite */
+@media (max-width: 1080px) {
   .burger { display: block; order: 3; margin-left: 10px; }
   .widget-mh { order: 2; margin-left: auto; }
   .menu { order: 4; display: none; position: absolute; top: 82px; left: 0; right: 0; background: #fff; flex-direction: column; align-items: stretch; padding: 12px; border-bottom: 1px solid var(--ligne); box-shadow: var(--ombre); margin: 0; }
@@ -397,6 +392,12 @@ img { max-width: 100%; display: block; }
   .menu a { padding: 13px 16px; border-radius: 10px; }
   .menu a.on::after { display: none; }
   .menu a.on { background: var(--vert-pale); }
+}
+@media (max-width: 980px) {
+  .foot__grid { grid-template-columns: 1fr 1fr; }
+  .grille--4 { grid-template-columns: repeat(2, 1fr); }
+  .stats { grid-template-columns: repeat(2, 1fr); }
+  .duo { grid-template-columns: 1fr; }
 }
 @media (max-width: 768px) {
   .grille--3, .grille--2 { grid-template-columns: 1fr; }
