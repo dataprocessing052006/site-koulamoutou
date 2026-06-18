@@ -112,7 +112,7 @@ img { max-width: 100%; display: block; }
 .tricolore i:nth-child(3) { background: var(--bleu-l); }
 
 /* ====================== HÉROS IMMERSIF (accueil) ====================== */
-.hero { position: relative; overflow: hidden; color: #fff; padding: 40px 0 64px; }
+.hero { position: relative; overflow: hidden; color: #fff; padding: 72px 0 72px; }
 .hero__bg { position: absolute; inset: 0; z-index: 0; }
 .hero__bg svg { width: 100%; height: 100%; }
 .hero__veil { position: absolute; inset: 0; z-index: 1; background: linear-gradient(100deg, rgba(8,40,22,0.80) 0%, rgba(8,40,22,0.55) 45%, rgba(8,40,22,0.25) 100%); }
