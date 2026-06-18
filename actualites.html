@@ -45,6 +45,10 @@
   <section class="section section--alt">
     <div class="conteneur">
       <h2 class="section-titre">Toutes les actualités</h2>
+
+      <!-- Articles publiés depuis le back-office (Supabase) -->
+      <div id="actus-cms" class="grille grille--3"></div>
+
       <div class="grille grille--3">
 
         <article class="actu revele">
@@ -212,7 +216,9 @@
 
   </main>
   <footer class="pied" id="site-pied"></footer>
-  <script src="js/foret-ambiance.js?v=2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-config.js"></script>
   <script src="js/composants.js?v=2"></script>
+  <script src="js/actus-public.js"></script>
 </body>
 </html>

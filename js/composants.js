@@ -103,7 +103,7 @@
       '</div>' +
       '<div class="foot__bas"><div class="wrap">' +
         '© ' + new Date().getFullYear() + ' Mairie de Koula-Moutou — Tous droits réservés. ' +
-        'Portail institutionnel de la commune. 🌿<br>' +
+        'Portail institutionnel de la commune. 🌿 · <a href="admin.html">Administration</a><br>' +
         '<span style="font-size:0.74rem;opacity:0.75">Photographies : Wikimedia Commons — V.&nbsp;Vaquin, D.&nbsp;Stanley, A.&nbsp;Rouvin, Kani&nbsp;Beat (licences CC&nbsp;BY / CC&nbsp;BY-SA) et cartes postales anciennes du domaine public.</span>' +
       '</div></div>';
 

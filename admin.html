@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>Back-office — Actualités · Mairie de Koula-Moutou</title>
+  <link rel="stylesheet" href="css/style.css?v=2">
+  <link rel="icon" type="image/svg+xml" href="images/blason-koulamoutou.svg">
+  <style>
+    .adm-top { background: var(--vert-d); color: #fff; }
+    .adm-top .wrap { display: flex; align-items: center; gap: 14px; min-height: 64px; }
+    .adm-top img { height: 40px; }
+    .adm-top b { font-family: var(--police-titre); font-size: 1.05rem; }
+    .adm-top .adm-sortir { margin-left: auto; }
+    .adm-wrap { max-width: 1080px; margin: 30px auto; padding: 0 22px; }
+    .adm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: start; }
+    @media (max-width: 880px) { .adm-grid { grid-template-columns: 1fr; } }
+    .adm-carte { background: #fff; border: 1px solid var(--ligne); border-radius: var(--rayon); box-shadow: var(--ombre); padding: 24px; }
+    .adm-login { max-width: 420px; margin: 8vh auto; }
+    .adm-liste__item { display: flex; gap: 12px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--ligne); }
+    .adm-liste__item:last-child { border-bottom: 0; }
+    .adm-vign { width: 64px; height: 48px; border-radius: 8px; object-fit: cover; background: var(--vert-pale); flex-shrink: 0; }
+    .adm-liste__t { flex: 1; min-width: 0; }
+    .adm-liste__t h4 { margin: 0; font-size: 0.98rem; }
+    .adm-liste__t span { font-size: 0.78rem; color: var(--gris); }
+    .adm-statut { font-size: 0.7rem; font-weight: 800; text-transform: uppercase; padding: 3px 9px; border-radius: 20px; }
+    .adm-statut.on { background: #e4f4ea; color: #15803d; }
+    .adm-statut.off { background: #fde8e8; color: #b91c1c; }
+    .adm-actions { display: flex; gap: 6px; flex-wrap: wrap; }
+    .adm-mini { font-size: 0.78rem; padding: 6px 10px; border-radius: 7px; border: 1px solid var(--ligne); background: #fff; cursor: pointer; }
+    .adm-mini:hover { border-color: var(--vert-l); }
+    .adm-msg { padding: 12px 16px; border-radius: 10px; margin-bottom: 16px; font-weight: 600; display: none; }
+    .adm-msg.ok { display: block; background: #e4f4ea; color: #15803d; }
+    .adm-msg.err { display: block; background: #fde8e8; color: #b91c1c; }
+    .adm-config { background: #fff7e6; border: 1px solid var(--or); color: #7a5b00; padding: 14px 18px; border-radius: 10px; margin-bottom: 20px; }
+  </style>
+</head>
+<body>
+  <header class="adm-top"><div class="wrap">
+    <img src="images/blason-koulamoutou.svg" alt="">
+    <b>Back-office — Actualités</b>
+    <a href="index.html" class="btn btn--ligne adm-sortir" style="border-color:rgba(255,255,255,.6)">Voir le site</a>
+    <button id="btn-sortir" class="btn btn--or" style="display:none">Se déconnecter</button>
+  </div></header>
+
+  <div id="adm-config-alerte" class="adm-wrap" style="display:none">
+    <div class="adm-config">⚙️ Configuration Supabase manquante. Renseignez <code>js/supabase-config.js</code> (voir <a href="SUPABASE-SETUP.md">SUPABASE-SETUP.md</a>).</div>
+  </div>
+
+  <!-- CONNEXION -->
+  <section id="adm-login" class="adm-wrap" style="display:none">
+    <div class="adm-carte adm-login">
+      <h2 style="margin-bottom:18px">Connexion</h2>
+      <div id="login-msg" class="adm-msg"></div>
+      <form id="form-login" class="form">
+        <div class="champ"><label for="email">E-mail</label><input type="email" id="email" required></div>
+        <div class="champ"><label for="mdp">Mot de passe</label><input type="password" id="mdp" required></div>
+        <button type="submit" class="btn btn--vert" style="justify-content:center;width:100%">Se connecter</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- APPLICATION -->
+  <section id="adm-app" class="adm-wrap" style="display:none">
+    <div id="app-msg" class="adm-msg"></div>
+    <div class="adm-grid">
+      <!-- Éditeur -->
+      <div class="adm-carte">
+        <h2 id="editeur-titre" style="margin-bottom:18px">Nouvel article</h2>
+        <form id="form-article" class="form">
+          <input type="hidden" id="art-id">
+          <div class="champ"><label for="art-titre">Titre *</label><input type="text" id="art-titre" required></div>
+          <div class="form__ligne">
+            <div class="champ"><label for="art-cat">Catégorie</label>
+              <select id="art-cat">
+                <option>Urgent</option><option>Politique</option><option>Économie</option>
+                <option>Culture</option><option>Environnement</option><option>Santé</option>
+                <option>Éducation</option><option>Social</option><option>Voirie</option>
+                <option selected>Général</option>
+              </select>
+            </div>
+            <div class="champ"><label for="art-date">Date</label><input type="date" id="art-date"></div>
+          </div>
+          <div class="champ"><label for="art-chapeau">Chapeau (résumé)</label><textarea id="art-chapeau" rows="2"></textarea></div>
+          <div class="champ"><label for="art-contenu">Contenu *</label><textarea id="art-contenu" rows="8" required></textarea></div>
+          <div class="champ"><label for="art-image">Image</label><input type="file" id="art-image" accept="image/*"></div>
+          <div id="art-apercu" style="display:none"><img class="adm-vign" id="art-apercu-img" style="width:120px;height:80px"></div>
+          <label style="display:flex;align-items:center;gap:10px;font-weight:600;color:var(--vert-d)">
+            <input type="checkbox" id="art-publie" style="width:18px;height:18px"> Publié (visible sur le site)
+          </label>
+          <div style="display:flex;gap:10px">
+            <button type="submit" class="btn btn--vert" style="justify-content:center;flex:1">Enregistrer</button>
+            <button type="button" id="btn-annuler" class="btn btn--g" style="justify-content:center">Réinitialiser</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Liste -->
+      <div class="adm-carte">
+        <h2 style="margin-bottom:8px">Articles</h2>
+        <p style="font-size:0.84rem;color:var(--gris);margin-bottom:14px">Basculez « Publié / Retiré » pour afficher ou retirer du site.</p>
+        <div id="adm-liste"><p style="color:var(--gris)">Chargement…</p></div>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Actualité — Ville de Koula-Moutou</title>
+  <meta name="description" content="Actualité de la commune de Koula-Moutou.">
+  <link rel="stylesheet" href="css/style.css?v=2">
+  <link rel="icon" type="image/svg+xml" href="images/blason-koulamoutou.svg">
+</head>
+<body data-page="actualites">
+  <div id="site-entete"></div>
+  <main>
+
+  <section class="heros heros--page">
+    <div class="conteneur heros__contenu">
+      <span class="heros__sur-titre" id="art-cat">Actualité</span>
+      <h1 id="art-titre">Chargement…</h1>
+      <div class="fil"><a href="index.html">Accueil</a> › <a href="actualites.html">Actualités</a> › <span id="art-fil">Article</span></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="conteneur article" id="art-conteneur">
+      <p id="art-etat" style="color:var(--gris)">Chargement de l'article…</p>
+      <div id="art-corps" style="display:none">
+        <div class="actu__date" id="art-date"></div>
+        <figure class="article__media" id="art-figure" style="display:none">
+          <img id="art-img" src="" alt="">
+        </figure>
+        <div>
+          <p class="chapeau" id="art-chapeau" style="display:none"></p>
+          <div id="art-contenu"></div>
+        </div>
+        <a href="actualites.html" class="btn btn--vert mt-40">← Toutes les actualités</a>
+      </div>
+    </div>
+  </section>
+
+  </main>
+  <footer class="pied" id="site-pied"></footer>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/composants.js?v=2"></script>
+  <script src="js/article.js"></script>
+</body>
+</html>
