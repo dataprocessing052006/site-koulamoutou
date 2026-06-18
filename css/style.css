@@ -176,9 +176,10 @@ img { max-width: 100%; display: block; }
 
 /* ====================== WIDGET HEURE & MÉTÉO (en-tête) ====================== */
 .widget-mh {
+  position: relative;
   display: flex; align-items: center; gap: 18px; white-space: nowrap;
   background: var(--vert-pale); border: 1px solid var(--ligne);
-  border-radius: 10px; padding: 5px 14px; color: var(--vert-d);
+  border-radius: 10px; padding: 5px 14px; color: var(--vert-d); cursor: default;
 }
 .widget-mh__heure { display: flex; flex-direction: column; line-height: 1.05; }
 .widget-mh__h { font-family: var(--police-titre); font-size: 1.02rem; font-weight: 700; font-variant-numeric: tabular-nums; color: var(--vert-d); }
@@ -190,32 +191,27 @@ img { max-width: 100%; display: block; }
 .widget-mh__desc { display: none; }
 @media (max-width: 600px) { .widget-mh__d { display: none; } }
 
-/* ====================== MODALE PRÉVISIONS MÉTÉO ====================== */
-.mm { position: fixed; inset: 0; z-index: 2000; display: none; }
-.mm.open { display: block; }
-.mm__overlay { position: absolute; inset: 0; background: rgba(8,40,22,0.55); backdrop-filter: blur(2px); }
-.mm__panel { position: relative; z-index: 1; background: #fff; max-width: 560px; width: calc(100% - 32px); margin: 8vh auto 0; border-radius: 16px; box-shadow: var(--ombre-forte); padding: 24px 26px 18px; border-top: 5px solid var(--or); animation: mmpop 0.2s ease; }
-@keyframes mmpop { from { transform: translateY(-12px); opacity: 0; } to { transform: none; opacity: 1; } }
-.mm__x { position: absolute; top: 8px; right: 14px; background: none; border: 0; font-size: 1.9rem; line-height: 1; color: var(--gris); cursor: pointer; }
-.mm__x:hover { color: var(--vert-d); }
-.mm__ville { display: block; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--or); font-weight: 700; }
-.mm h3 { font-size: 1.3rem; margin: 2px 0 16px; }
-.mm__jours { display: grid; gap: 8px; }
-.mm__jour { display: grid; grid-template-columns: 1.5fr auto 1.4fr 1.2fr auto; align-items: center; gap: 10px; padding: 9px 12px; border: 1px solid var(--ligne); border-radius: 10px; }
-.mm__jour[data-aujourdhui] { background: var(--vert-pale); border-color: var(--vert-l); }
-.mm__nom { font-weight: 700; color: var(--vert-d); text-transform: capitalize; font-size: 0.9rem; }
-.mm__ico { font-size: 1.3rem; text-align: center; }
-.mm__desc2 { font-size: 0.82rem; color: var(--gris); }
-.mm__temp2 { font-size: 0.92rem; text-align: right; }
-.mm__temp2 b { color: var(--vert-d); }
-.mm__pp { font-size: 0.78rem; color: var(--bleu-l); white-space: nowrap; text-align: right; min-width: 48px; }
-.mm__src { font-size: 0.72rem; color: var(--gris); text-align: right; margin-top: 12px; }
-.mm__info { color: var(--gris); padding: 16px 0; text-align: center; }
-@media (max-width: 560px) {
-  .mm__jour { grid-template-columns: 1fr auto auto; }
-  .mm__desc2, .mm__pp { display: none; }
-  .mm__panel { margin-top: 4vh; }
+/* ====================== POPOVER PRÉVISIONS MÉTÉO (survol) ====================== */
+.prev {
+  position: absolute; top: calc(100% + 9px); right: 0; width: 320px;
+  background: #fff; border: 1px solid var(--ligne); border-top: 4px solid var(--or);
+  border-radius: 12px; box-shadow: var(--ombre-forte); padding: 14px 16px; z-index: 1500;
+  white-space: normal; display: none;
 }
+.widget-mh.prev-on .prev { display: block; animation: prevpop 0.18s ease; }
+@keyframes prevpop { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+.prev::before { content: ""; position: absolute; top: -7px; right: 26px; width: 12px; height: 12px; background: var(--or); transform: rotate(45deg); }
+.prev__t { font-family: var(--police-titre); font-weight: 700; color: var(--vert-d); font-size: 0.92rem; margin-bottom: 10px; }
+.prev__jours { display: grid; gap: 5px; }
+.prev__jour { display: grid; grid-template-columns: 2.6em auto 1fr auto; align-items: center; gap: 8px; font-size: 0.8rem; color: var(--encre); }
+.prev__jour[data-auj] { font-weight: 700; background: var(--vert-pale); border-radius: 6px; padding: 2px 6px; margin: 0 -6px; }
+.prev__nom { color: var(--vert-d); text-transform: capitalize; }
+.prev__ico { font-size: 1.05rem; text-align: center; }
+.prev__temp { text-align: left; }
+.prev__temp b { color: var(--vert-d); }
+.prev__pp { color: var(--bleu-l); text-align: right; white-space: nowrap; }
+.prev__info { color: var(--gris); font-size: 0.82rem; padding: 6px 0; }
+@media (max-width: 560px) { .prev { width: 270px; } .prev__pp { display: none; } }
 
 /* Hero deux colonnes : message à gauche, météo + Maire à droite */
 @media (max-width: 900px) {

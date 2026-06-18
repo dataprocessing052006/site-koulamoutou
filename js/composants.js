@@ -179,82 +179,62 @@
     configurerPrevisions(CODES);
   }
 
-  /* ---------------- PRÉVISIONS (modale au clic sur le widget) ---------------- */
+  /* ---------------- PRÉVISIONS (popover au survol du widget) ---------------- */
   function configurerPrevisions(CODES) {
     var widget = document.getElementById("widget-mh");
     if (!widget) return;
-    widget.style.cursor = "pointer";
-    widget.setAttribute("role", "button");
     widget.setAttribute("tabindex", "0");
-    widget.setAttribute("aria-haspopup", "dialog");
-    widget.title = "Voir les prévisions des prochains jours";
+    widget.setAttribute("aria-label", "Heure et météo de Koula-Moutou — survolez pour les prévisions");
 
-    var modal = null, dejaCharge = false;
+    var pop = document.createElement("div");
+    pop.className = "prev";
+    pop.setAttribute("role", "tooltip");
+    pop.innerHTML =
+      '<div class="prev__t">Prévisions · Koula-Moutou</div>' +
+      '<div class="prev__jours" id="prev-jours"><p class="prev__info">Chargement…</p></div>';
+    widget.appendChild(pop);
 
-    function construire() {
-      modal = document.createElement("div");
-      modal.className = "mm";
-      modal.setAttribute("role", "dialog");
-      modal.setAttribute("aria-modal", "true");
-      modal.setAttribute("aria-label", "Prévisions météo de Koula-Moutou");
-      modal.innerHTML =
-        '<div class="mm__overlay" data-fermer></div>' +
-        '<div class="mm__panel">' +
-          '<button class="mm__x" aria-label="Fermer" data-fermer>&times;</button>' +
-          '<span class="mm__ville">Koula-Moutou · Ogooué-Lolo</span>' +
-          '<h3>Prévisions des prochains jours</h3>' +
-          '<div class="mm__jours" id="mm-jours"><p class="mm__info">Chargement des prévisions…</p></div>' +
-          '<p class="mm__src">Données météo : Open-Meteo</p>' +
-        '</div>';
-      document.body.appendChild(modal);
-      modal.addEventListener("click", function (e) { if (e.target.hasAttribute("data-fermer")) fermer(); });
-      document.addEventListener("keydown", function (e) { if (e.key === "Escape") fermer(); });
-    }
+    var dejaCharge = false;
 
     function chargerPrevisions() {
       var url = "https://api.open-meteo.com/v1/forecast?latitude=-1.1373&longitude=12.4719" +
         "&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max" +
         "&timezone=" + encodeURIComponent("Africa/Libreville") + "&forecast_days=7";
-      var cont = document.getElementById("mm-jours");
+      var cont = document.getElementById("prev-jours");
       fetch(url, { cache: "no-store" })
         .then(function (r) { if (!r.ok) throw 0; return r.json(); })
         .then(function (data) {
           var d = data.daily; if (!d || !d.time) throw 0;
-          var fmt = new Intl.DateTimeFormat("fr-FR", { weekday: "long", day: "numeric", month: "short", timeZone: "Africa/Libreville" });
+          var fmt = new Intl.DateTimeFormat("fr-FR", { weekday: "short", day: "numeric", timeZone: "Africa/Libreville" });
           var html = "";
           for (var i = 0; i < d.time.length; i++) {
             var dt = new Date(d.time[i] + "T12:00:00");
             var lbl = fmt.format(dt); lbl = lbl.charAt(0).toUpperCase() + lbl.slice(1);
             var info = CODES[d.weather_code[i]] || ["🌡️", "—"];
             var pp = d.precipitation_probability_max ? d.precipitation_probability_max[i] : null;
-            html += '<div class="mm__jour"' + (i === 0 ? ' data-aujourdhui' : '') + '>' +
-              '<span class="mm__nom">' + (i === 0 ? "Aujourd'hui" : lbl) + '</span>' +
-              '<span class="mm__ico">' + info[0] + '</span>' +
-              '<span class="mm__desc2">' + info[1] + '</span>' +
-              '<span class="mm__temp2"><b>' + Math.round(d.temperature_2m_max[i]) + '°</b> / ' + Math.round(d.temperature_2m_min[i]) + '°</span>' +
-              (pp != null ? '<span class="mm__pp">💧 ' + pp + '%</span>' : '<span class="mm__pp"></span>') +
+            html += '<div class="prev__jour"' + (i === 0 ? ' data-auj' : '') + '>' +
+              '<span class="prev__nom">' + (i === 0 ? "Auj." : lbl) + '</span>' +
+              '<span class="prev__ico" title="' + info[1] + '">' + info[0] + '</span>' +
+              '<span class="prev__temp"><b>' + Math.round(d.temperature_2m_max[i]) + '°</b> / ' + Math.round(d.temperature_2m_min[i]) + '°</span>' +
+              '<span class="prev__pp">' + (pp != null ? '💧 ' + pp + '%' : '') + '</span>' +
             '</div>';
           }
           if (cont) cont.innerHTML = html;
         })
-        .catch(function () { if (cont) cont.innerHTML = '<p class="mm__info">Prévisions indisponibles pour le moment.</p>'; });
+        .catch(function () { if (cont) cont.innerHTML = '<p class="prev__info">Prévisions indisponibles.</p>'; });
     }
 
-    function ouvrir() {
-      if (!modal) construire();
-      modal.classList.add("open");
-      document.body.style.overflow = "hidden";
+    function montrer() {
+      widget.classList.add("prev-on");
       if (!dejaCharge) { chargerPrevisions(); dejaCharge = true; }
     }
-    function fermer() {
-      if (modal) modal.classList.remove("open");
-      document.body.style.overflow = "";
-    }
+    function cacher() { widget.classList.remove("prev-on"); }
 
-    widget.addEventListener("click", ouvrir);
-    widget.addEventListener("keydown", function (e) {
-      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); ouvrir(); }
-    });
+    widget.addEventListener("mouseenter", montrer);
+    widget.addEventListener("mouseleave", cacher);
+    widget.addEventListener("focusin", montrer);
+    widget.addEventListener("focusout", cacher);
+    widget.addEventListener("keydown", function (e) { if (e.key === "Escape") { cacher(); widget.blur(); } });
   }
 
   /* ---------------- ANIMATIONS AU DÉFILEMENT ---------------- */
