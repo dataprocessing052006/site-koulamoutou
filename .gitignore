@@ -1,3 +1,6 @@
 ﻿.claude/
 _archives/
 koulamoutou-production.zip
+
+node_modules/
+.vercel/

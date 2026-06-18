@@ -1,37 +1,32 @@
 /* ===================================================================
-   Accueil : injecte les articles publiés (back-office Supabase) dans
-   le carrousel et le bandeau défilant, devant les actualités statiques.
-   Dégradation propre si la config Supabase est absente.
+   Accueil : injecte les articles publiés (back-office) dans le
+   carrousel et le bandeau défilant, devant les actualités statiques.
+   Dégradation propre si l'API n'est pas encore configurée.
    =================================================================== */
 (function () {
   "use strict";
 
   function lancer() {
-    var sb = window.creerClientSupabase && window.creerClientSupabase();
-    if (!sb) return; // pas de config : on garde le contenu statique
-
-    sb.from("articles").select("*").eq("publie", true)
-      .order("date_pub", { ascending: false }).order("created_at", { ascending: false })
-      .then(function (res) {
-        if (res.error || !res.data || !res.data.length) return;
-        var arts = res.data.slice(0, 6);
-
+    fetch("/api/articles")
+      .then(function (r) { return r.ok ? r.json() : []; })
+      .then(function (arts) {
+        if (!arts || !arts.length) return;
+        arts = arts.slice(0, 6);
         injecterCarrousel(arts);
         injecterBandeau(arts);
-
-        if (window.initCarrousel) window.initCarrousel(); // recalcul points/état
-      });
+        if (window.initCarrousel) window.initCarrousel();
+      })
+      .catch(function () { /* API absente : contenu statique conservé */ });
   }
 
   function dateFr(d) {
-    if (!d) return "";
-    return new Date(d + "T12:00:00").toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" });
+    d = (d || "").slice(0, 10);
+    return d ? new Date(d + "T12:00:00").toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" }) : "";
   }
 
   function injecterCarrousel(arts) {
     var piste = document.querySelector("#carrousel-actus .carrousel__piste");
     if (!piste) return;
-    // insérées en tête (plus récentes d'abord), avant les diapos statiques
     for (var k = arts.length - 1; k >= 0; k--) {
       var a = arts[k];
       var slide = document.createElement("a");
@@ -57,7 +52,6 @@
   function injecterBandeau(arts) {
     var track = document.querySelector(".ticker .ticker__track");
     if (!track) return;
-    // ensemble de base = première moitié des éléments existants (statiques réels)
     var enfants = track.children;
     var moitie = Math.floor(enfants.length / 2) || enfants.length;
     var base = [];
@@ -73,15 +67,12 @@
       return lien;
     });
 
-    var seq = cms.concat(base); // CMS en premier puis statiques
+    var seq = cms.concat(base);
     track.innerHTML = "";
-    seq.forEach(function (n) { track.appendChild(n.cloneNode(true)); }); // copie 1
-    seq.forEach(function (n) { track.appendChild(n.cloneNode(true)); }); // copie 2 (boucle continue)
+    seq.forEach(function (n) { track.appendChild(n.cloneNode(true)); });
+    seq.forEach(function (n) { track.appendChild(n.cloneNode(true)); });
   }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", lancer);
-  } else {
-    lancer();
-  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", lancer);
+  else lancer();
 })();
